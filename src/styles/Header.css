@@ -1,0 +1,9 @@
+div#jam-logo{
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+div#favorites-link{
+  border: 1px solid black;
+  cursor: pointer;
+}
