@@ -1,3 +1,9 @@
-img#album-image{
+/* img#album-image{
   height: 20em;
+  cursor: pointer;
 }
+
+img#album-image:hover{
+  transition: 1s;
+  opacity: .7;
+} */

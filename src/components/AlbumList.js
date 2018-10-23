@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArtistDetail from './ArtistDetail.js'
+// import ArtistDetail from './ArtistDetail.js'
 import AlbumDetail from './AlbumDetail.js'
 
 import { runSearch, fetchArtists } from '../actions/actions'
@@ -31,13 +31,18 @@ class AlbumList extends Component {
 
   renderArtists = () => {
     return this.state.artists ? this.state.artists.map(artist =>
-      <ArtistDetail key={artist.url} artist={artist}/>) : ''
+      <AlbumDetail key={artist.url} artist={artist}/>) : ''
   }
+
+  // renderArtists = () => {
+  //   return this.state.artists ? this.state.artists.map(artist =>
+  //     <ArtistDetail key={artist.url} artist={artist}/>) : ''
+  // }
 
   render() {
     // console.log('AlbumList state:', this.state)
     // console.log('AlbumList albums:', this.state.albums)
-    // console.log('props', this.props)
+    // console.log('AlbumList props', this.props)
     return (
       <div>
         {this.state.artists ? this.renderArtists() : this.renderAlbums()}

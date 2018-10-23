@@ -28,8 +28,12 @@ class Search extends Component {
     return (
       <div>
         <form onSubmit={this.search}>
-          <input type="text" name='search' value={this.state.query} onChange={this.handleChange} placeholder='Enter an Artist..' />
-          <button id='search-button' type="submit">Search</button>
+          <input type="text"
+            name='search'
+            value={this.state.query}
+            onChange={this.handleChange}
+            placeholder='Search by Artist..' />
+          <button id='search-button' type="submit">Done</button>
         </form>
       </div>
     );

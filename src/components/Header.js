@@ -23,7 +23,7 @@ class Header extends Component {
           id='jam-logo'
           onClick={() => {this.renderTopArtists()}}
           >
-            Jam
+            JAM
         </div>
         <div
           id='favorites-link'

@@ -3,7 +3,19 @@ div#jam-logo{
   cursor: pointer;
 }
 
+div#jam-logo:hover{
+  color: white;
+  transition: 1s;
+  background-color: red;
+}
+
 div#favorites-link{
   border: 1px solid black;
   cursor: pointer;
+}
+
+div#favorites-link:hover{
+  color: white;
+  transition: 1s;
+  background-color: blue;
 }

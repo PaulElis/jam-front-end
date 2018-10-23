@@ -4,7 +4,10 @@ import CardSection from './CardSection.js'
 import Button from './Button.js'
 // import album from '../images/album.jpg'
 import record from '../images/record.png'
+import '../styles/AlbumDetail.css'
 
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 class AlbumDetail extends Component {
 
@@ -28,22 +31,24 @@ class AlbumDetail extends Component {
       <div>
         <Card>
           <CardSection>
-            <span> {this.props.album.name !== '(null)' ? this.props.album.name : `${this.props.album.artist.name}'s Album`} </span>
-            <span> {this.numberFormat(this.props.album.playcount)} Plays </span>
+            <span> {this.props.artist ? this.props.artist.name :
+              this.props.album.name !== '(null)' ? this.props.album.name : `${this.props.album.artist.name}'s Untitled Album`} </span>
+            <span> {this.props.artist ? this.numberFormat(this.props.artist.listeners) : this.numberFormat(this.props.album.playcount)} Plays </span>
           </CardSection>
 
           <CardSection>
             <img
               id='album-image'
-              src={this.props.album.image[2]['#text'] ? this.props.album.image[2]['#text'] : record}
+              src={this.props.artist ? this.props.artist.image[2]['#text'] : this.props.album.image[2]['#text'] ? this.props.album.image[2]['#text'] : record}
               alt='oh no!'
+              // onClick={() => {this.props.addArtistToFavorites(this.props.artist)}}
               onError={(e) => { e.target.src = record /*replacement image*/ }}
             />
           </CardSection>
 
           <CardSection>
-            <Button link={this.props.album.url}>
-              View Artist
+            <Button link={this.props.artist ? this.props.artist.url : this.props.album.url}>
+              {this.props.artist ? 'View Arist' : 'View Album'}
             </Button>
           </CardSection>
 
@@ -53,4 +58,10 @@ class AlbumDetail extends Component {
   }
 }
 
-export default AlbumDetail;
+function mapStateToProps(state){
+  return {
+    favorites: state.favorites,
+  }
+}
+
+export default withRouter(connect(mapStateToProps, null)(AlbumDetail))

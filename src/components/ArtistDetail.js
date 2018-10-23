@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import Card from './Card.js'
 import CardSection from './CardSection.js'
 import Button from './Button.js'
-// import album from '../images/album.jpg'
 import record from '../images/record.png'
 import '../styles/ArtistDetail.css'
+
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 class ArtistDetail extends Component {
 
@@ -35,6 +37,7 @@ class ArtistDetail extends Component {
               id='album-image'
               src={this.props.artist.image[2]['#text'] ? this.props.artist.image[2]['#text'] : record}
               alt='oh no!'
+              // onClick={() => {this.props.addArtistToFavorites(this.props.artist)}}
               onError={(e) => { e.target.src = record /*replacement image*/ }}
             />
           </CardSection>
@@ -50,4 +53,10 @@ class ArtistDetail extends Component {
   }
 }
 
-export default ArtistDetail;
+function mapStateToProps(state){
+  return {
+    favorites: state.favorites,
+  }
+}
+
+export default withRouter(connect(mapStateToProps, null)(ArtistDetail))

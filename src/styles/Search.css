@@ -1,3 +1,10 @@
 button#search-button{
   border: 1px solid black;
+  cursor: pointer;
+}
+
+button#search-button:hover{
+  color: white;
+  transition: 1s;
+  background-color: green;
 }
