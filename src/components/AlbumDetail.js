@@ -8,24 +8,31 @@ import '../styles/AlbumDetail.css'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { addArtistToFavorites, deleteArtistFromFavorites } from '../actions/actions'
+
 
 class AlbumDetail extends Component {
 
   numberFormat = (num) => {
-  // Nine Zeroes for Billions
+          // Nine Zeroes for Billions
   return Math.abs(Number(num)) >= 1.0e+9
        ? Math.abs(Number(num)) / 1.0e+9 + "B"
-       // Six Zeroes for Millions
+          // Six Zeroes for Millions
        : Math.abs(Number(num)) >= 1.0e+6
        ? Math.round(Number(num).toString().slice(0,2)) / 1.0e+1 + "M"
-       // Three Zeroes for Thousands
+          // Three Zeroes for Thousands
        : Math.abs(Number(num)) >= 1.0e+3
        ? Math.round(Number(num).toString().slice(0,3)) + "K"
        : Math.abs(Number(num));
-   }
+  }
+
+  componentDidMount = () => {
+    
+  }
 
   render() {
-    // console.log('props', this.props);
+    // console.log('in AlbumDetail');
+    // console.log('AlbumDetail props', this.props);
     // console.log('state', this.state);
     return (
       <div>
@@ -39,9 +46,9 @@ class AlbumDetail extends Component {
           <CardSection>
             <img
               id='album-image'
-              src={this.props.artist ? this.props.artist.image[2]['#text'] : this.props.album.image[2]['#text'] ? this.props.album.image[2]['#text'] : record}
+              src={this.props.image ? this.props.image : record}
               alt='oh no!'
-              // onClick={() => {this.props.addArtistToFavorites(this.props.artist)}}
+              onClick={() => {this.props.favorite ? this.props.deleteArtistFromFavorites(this.props.favorite) : this.props.addArtistToFavorites(this.props.artist)}}
               onError={(e) => { e.target.src = record /*replacement image*/ }}
             />
           </CardSection>
@@ -64,4 +71,4 @@ function mapStateToProps(state){
   }
 }
 
-export default withRouter(connect(mapStateToProps, null)(AlbumDetail))
+export default withRouter(connect(mapStateToProps, {addArtistToFavorites, deleteArtistFromFavorites})(AlbumDetail))

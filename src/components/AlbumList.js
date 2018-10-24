@@ -20,32 +20,28 @@ class AlbumList extends Component {
     }
   }
 
-  componentDidMount(){
-    // this.state.albums === [] ? this.props.fetchArtists() : this.props.history.push('/albums')
-  }
-
-  renderAlbums = () => {
-    return this.state.albums ? this.state.albums.map(album =>
-      <AlbumDetail key={album.url} album={album}/>) : ''
+  renderFavorites = () => {
+    return this.props.favorites.map(favorite =>
+      <AlbumDetail key={favorite.url} artist={favorite} favorite={favorite} image={favorite.image}/>)
   }
 
   renderArtists = () => {
-    return this.state.artists ? this.state.artists.map(artist =>
-      <AlbumDetail key={artist.url} artist={artist}/>) : ''
+    return this.state.artists.map(artist =>
+      <AlbumDetail key={artist.url} artist={artist} image={artist.image[2]['#text']}/>)
   }
 
-  // renderArtists = () => {
-  //   return this.state.artists ? this.state.artists.map(artist =>
-  //     <ArtistDetail key={artist.url} artist={artist}/>) : ''
-  // }
+  renderAlbums = () => {
+    return this.state.albums.map(album =>
+      <AlbumDetail key={album.url} album={album} image={album.image[2]['#text']}/>)
+  }
 
   render() {
     // console.log('AlbumList state:', this.state)
-    // console.log('AlbumList albums:', this.state.albums)
     // console.log('AlbumList props', this.props)
     return (
       <div>
-        {this.state.artists ? this.renderArtists() : this.renderAlbums()}
+        {this.props.favorites ? this.renderFavorites() : this.state.artists ?
+          this.renderArtists() : this.renderAlbums()}
       </div>
     );
   }
