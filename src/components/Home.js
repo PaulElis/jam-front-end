@@ -7,8 +7,7 @@ class Home extends Component {
   render() {
     return (
       <div id='home-container'>
-        Home
-        <About />
+        {/* <About /> */}
         <AlbumList />
       </div>
     );

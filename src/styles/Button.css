@@ -1,12 +1,15 @@
 a#button{
-  color: black;
-  border: 1px solid #000;
+  color: #000;
+  font-size: 4vw;
+  font-weight: bold;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   padding: 1%;
   text-decoration: none;
 }
 
 a#button:hover{
-  color: white;
   transition: 1s;
-  background-color: red;
+  background-color: #ddd;
 }

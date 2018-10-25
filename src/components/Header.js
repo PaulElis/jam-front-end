@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from './Search.js'
 // import Favorites from './Favorites.js'
 import '../styles/Header.css'
+import favorites from '../images/favorites.png'
 
 import { runSearch, fetchArtists } from '../actions/actions'
 import { connect } from 'react-redux'
@@ -18,20 +19,15 @@ class Header extends Component {
   render() {
     // console.log('Header', this.props);
     return (
-      <div>
-        <div
-          id='jam-logo'
-          onClick={() => {this.renderTopArtists()}}
-          >
+      <div id='header-container'>
+        <div id='jam-logo' onClick={() => {this.renderTopArtists()}} >
             JAM
         </div>
-        <div
-          id='favorites-link'
-          onClick={() => {this.props.history.push('/favorites')}}
-          >
-            Favorites
-        </div>
         <Search />
+        <div id='favorites-link' >
+            <img id='favorites-image' src={favorites}
+              onClick={() => {this.props.history.push('/favorites')}} />
+        </div>
       </div>
     );
   }

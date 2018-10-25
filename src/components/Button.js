@@ -6,8 +6,7 @@ class Button extends Component {
     // console.log('props', this.props);
     return (
         <a href={this.props.link} target="_blank" rel="noopener noreferrer" id='button'>
-          {this.props.children}
-        </a>
+          {this.props.children} </a>
     );
   }
 }

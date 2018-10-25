@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Search.css'
+import search from '../images/search.png'
 
 import { runSearch } from '../actions/actions'
 import { connect } from 'react-redux'
@@ -26,14 +27,18 @@ class Search extends Component {
   render() {
     // console.log(this.state.query);
     return (
-      <div>
-        <form onSubmit={this.search}>
-          <input type="text"
+      <div id='search-container'>
+        <form id='search-form-container' onSubmit={this.search}>
+          <input
+            id='search-box'
+            type="text"
             name='search'
             value={this.state.query}
             onChange={this.handleChange}
             placeholder='Search by Artist..' />
-          <button id='search-button' type="submit">Done</button>
+          <button id='search-button' type="submit">
+            <img id='search-image' src={search} />
+          </button>
         </form>
       </div>
     );

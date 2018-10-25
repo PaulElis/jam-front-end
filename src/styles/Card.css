@@ -1,5 +1,4 @@
 div#card-container{
-  background-color: #ccc;
-  padding: 2%;
-  border: 2px solid black;
+  letter-spacing: 1px;
+  border-radius: 5px;
 }

@@ -53,8 +53,9 @@ export function deleteArtistFromFavorites(artist) {
       method: "DELETE",
     })
     .then(res => res.json())
-    .then(console.log)
-    // .then(() => this.getFavorites)
+    .then(json => {
+      dispatch({type: "GET_FAVORITES", payload: json.favorites})
+    })
   }
 }
 

@@ -1,5 +1,40 @@
+div#albumdetail-container{
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 5%;
+}
+
+div#card-header-upper-container{
+  background-color: #FAD397;
+}
+
+div#card-header-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0% 2% 0% 2%;
+}
+
+span.card-header{
+  font-size: 5vw;
+}
+
+#card-header-link a{
+  color: black;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: 1px solid #eee;
+  padding: 0% 2% 0% 2%;
+  cursor: pointer;
+}
+
+#card-header-link a:hover{
+  color: #aaa;
+}
+
 img#album-image{
-  height: 20em;
+  width: 100%;
+  border-radius: 5px;
   cursor: pointer;
 }
 

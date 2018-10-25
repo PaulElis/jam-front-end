@@ -1,10 +1,40 @@
+div#search-container{
+  border: 1px solid #ddd;
+}
+
+#search-form-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#search-box{
+  font-size: 4vw;
+  padding: 1%;
+  border-radius: 5px;
+  width: 65%;
+}
+
 button#search-button{
-  border: 1px solid black;
+  color: #000;
+  font-size: 4vw;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  border: 1px solid #ddd;
   cursor: pointer;
 }
 
 button#search-button:hover{
-  color: white;
   transition: 1s;
-  background-color: green;
+  background-color: #eee;
+}
+
+#search-image{
+  height: 1em;
+  padding: 1% 5% 1% 5%;
 }
