@@ -23,8 +23,7 @@ span.card-header{
   color: black;
   letter-spacing: 1px;
   text-decoration: none;
-  border: 1px solid #eee;
-  padding: 0% 2% 0% 2%;
+  /* border: 1px solid #eee; */
   cursor: pointer;
 }
 
@@ -41,4 +40,96 @@ img#album-image{
 img#album-image:hover{
   transition: 1s;
   opacity: .7;
+}
+
+@media only screen and (min-width: 768px) {
+div#albumdetail-container{
+  /* border-radius: 5px;
+  border: 1px solid #ccc; */
+  margin: 3%;
+}
+
+div#card-header-upper-container{
+  /* background-color: #FAD397; */
+}
+
+div#card-header-container{
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0% 2% 0% 2%; */
+}
+
+span.card-header{
+  font-size: 2vw;
+}
+
+#card-header-link a{
+  /* color: black;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: 1px solid #eee;
+  cursor: pointer; */
+}
+
+#card-header-link a:hover{
+  color: #aaa;
+}
+
+img#album-image{
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+img#album-image:hover{
+  transition: 1s;
+  opacity: .7;
+}
+}
+
+@media only screen and (min-width: 1200px) {
+div#albumdetail-container{
+  /* border-radius: 5px;
+  border: 1px solid #ccc; */
+  margin: 8%;
+}
+
+div#card-header-upper-container{
+  /* background-color: #FAD397; */
+}
+
+div#card-header-container{
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0% 2% 0% 2%; */
+}
+
+span.card-header{
+  font-size: 2vw;
+}
+
+#card-header-link a{
+  /* color: black;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: 1px solid #eee;
+  cursor: pointer; */
+}
+
+#card-header-link a:hover{
+  color: #aaa;
+}
+
+img#album-image{
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+img#album-image:hover{
+  transition: 1s;
+  opacity: .7;
+}
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AlbumDetail from './AlbumDetail.js'
 import '../styles/AlbumList.css'
+// import MediaQuery from 'react-responsive';
 
 import { runSearch, fetchArtists, getFavorites, deleteArtistFromFavorites } from '../actions/actions'
 import { connect } from 'react-redux'
@@ -33,7 +34,8 @@ class AlbumList extends Component {
 
   renderArtists = () => {
     return this.state.artists.map(artist =>
-      <AlbumDetail key={artist.url} artist={artist} image={artist.image[3]['#text']}/>)
+        <AlbumDetail key={artist.url} artist={artist} image={artist.image[3]['#text']}/>
+    )
   }
 
   renderAlbums = () => {

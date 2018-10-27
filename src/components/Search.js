@@ -37,7 +37,7 @@ class Search extends Component {
             onChange={this.handleChange}
             placeholder='Search by Artist..' />
           <button id='search-button' type="submit">
-            <img id='search-image' src={search} />
+            <img id='search-image' alt='oh no!' src={search} />
           </button>
         </form>
       </div>

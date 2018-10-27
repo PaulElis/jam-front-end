@@ -20,13 +20,15 @@ class Header extends Component {
     // console.log('Header', this.props);
     return (
       <div id='header-container'>
-        <div id='jam-logo' onClick={() => {this.renderTopArtists()}} >
-            JAM
+        <div id='jam-logo' alt='oh no!' onClick={() => {this.renderTopArtists()}} >
+          JAM
         </div>
-        <Search />
-        <div id='favorites-link' >
-            <img id='favorites-image' src={favorites}
-              onClick={() => {this.props.history.push('/favorites')}} />
+        <div id='header-right'>
+          <Search />
+          <div id='favorites-link' >
+              <img id='favorites-image' alt='oh no!' src={favorites}
+                onClick={() => {this.props.history.push('/favorites')}} />
+          </div>
         </div>
       </div>
     );

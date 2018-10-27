@@ -64,11 +64,11 @@ class AlbumDetail extends Component {
               onError={(e) => { e.target.src = record /*replacement image*/ }} />
           </CardSection>
 
-          {/* <CardSection>
+          <CardSection>
             <Button link={this.props.artist ? this.props.artist.url : this.props.album.url}>
               {this.props.artist ? 'View Arist' : 'View Album'}
             </Button>
-          </CardSection> */}
+          </CardSection>
         </Card>
       </div>
     );

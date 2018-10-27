@@ -5,11 +5,32 @@ a#button{
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 1%;
+  width: 50%;
+  padding: 1% 37%;
   text-decoration: none;
+  margin-bottom: 5%;
 }
 
 a#button:hover{
   transition: 1s;
-  background-color: #ddd;
+  background-color: #eee;
+}
+
+@media only screen and (min-width: 768px) {
+a#button{
+  font-size: 1.5vw;
+  padding: 1% 35%;
+  /* color: #000;
+  font-weight: bold;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 5%; */
+}
+
+a#button:hover{
+  /* transition: 1s;
+  background-color: #eee; */
+}
 }

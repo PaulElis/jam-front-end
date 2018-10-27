@@ -1,18 +1,18 @@
 div#search-container{
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
 }
 
 #search-form-container{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 #search-box{
   font-size: 4vw;
   padding: 1%;
   border-radius: 5px;
-  width: 65%;
+  width: 60%;
 }
 
 button#search-button{
@@ -25,7 +25,6 @@ button#search-button{
   align-items: center;
   border: 1px solid #ddd;
   border-radius: 5px;
-  border: 1px solid #ddd;
   cursor: pointer;
 }
 
@@ -36,5 +35,87 @@ button#search-button:hover{
 
 #search-image{
   height: 1em;
-  padding: 1% 5% 1% 5%;
+  padding: 1% 0%;
+}
+
+@media only screen and (min-width: 768px) {
+div#search-container{
+  /* border: 1px solid #ddd; */
+}
+
+#search-form-container{
+  /* display: flex;
+  flex-direction: row;
+  justify-content: flex-end; */
+}
+
+#search-box{
+  font-size: 3vw;
+  padding: 1%;
+  border-radius: 5px;
+  width: 60%;
+}
+
+button#search-button{
+  color: #000;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button#search-button:hover{
+  /* transition: 1s;
+  background-color: #eee; */
+}
+
+#search-image{
+  height: .8em;
+  padding: 1% 10%;
+}
+}
+
+@media only screen and (min-width: 1200px) {
+div#search-container{
+  /* border: 1px solid #ddd; */
+}
+
+#search-form-container{
+  /* display: flex;
+  flex-direction: row;
+  justify-content: flex-end; */
+}
+
+#search-box{
+  font-size: 2vw;
+  padding: 1%;
+  border-radius: 5px;
+  width: 65%;
+}
+
+button#search-button{
+  color: #000;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button#search-button:hover{
+  /* transition: 1s;
+  background-color: #eee; */
+}
+
+#search-image{
+  height: .5em;
+  padding: 1% 10%;
+}
 }
