@@ -55,13 +55,13 @@ img#favorites-image:hover{
 
 @media only screen and (min-width: 768px) {
 div#header-container{
-  /* font-size: 6vw;
+  font-size: 6vw;
   border: 1px solid #ddd;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: center; */
-  padding: 1%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 3%;
   /* position: fixed;
   width: 100%; */
 }

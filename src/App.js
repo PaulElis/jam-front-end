@@ -6,7 +6,7 @@ import AlbumList from './components/AlbumList.js'
 import Favorites from './components/Favorites.js'
 import Home from './components/Home.js'
 
-import { runSearch, fetchArtists } from '../src/actions/actions'
+import { runSearch, fetchArtists, addArtists } from '../src/actions/actions'
 import {Route, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -14,8 +14,10 @@ class App extends Component {
 
   initialRender = () => {
     this.props.fetchArtists()
-      .then(()=>
-        this.props.history.push('/home'))
+      .then(() => this.props.artists.map(artist =>
+        this.props.addArtists(artist)))
+        .then(()=>
+          this.props.history.push('/home'))
   }
 
   componentDidMount(){
@@ -45,4 +47,4 @@ function mapStateToProps(state){
   }
 }
 
-export default withRouter(connect(mapStateToProps, {runSearch, fetchArtists})(App));
+export default withRouter(connect(mapStateToProps, {runSearch, fetchArtists, addArtists})(App));

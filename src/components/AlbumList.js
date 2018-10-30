@@ -3,7 +3,7 @@ import AlbumDetail from './AlbumDetail.js'
 import '../styles/AlbumList.css'
 // import MediaQuery from 'react-responsive';
 
-import { runSearch, fetchArtists, getFavorites, deleteArtistFromFavorites } from '../actions/actions'
+import { fetchArtists, getFavorites, deleteArtistFromFavorites, runSearch } from '../actions/actions'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
@@ -34,7 +34,7 @@ class AlbumList extends Component {
 
   renderArtists = () => {
     return this.state.artists.map(artist =>
-        <AlbumDetail key={artist.url} artist={artist} image={artist.image[3]['#text']}/>
+      <AlbumDetail key={artist.url} artist={artist} image={artist.image[3]['#text']}/>
     )
   }
 
@@ -63,4 +63,4 @@ function mapStateToProps(state){
   }
 }
 
-export default withRouter(connect(mapStateToProps, {runSearch, fetchArtists, getFavorites, deleteArtistFromFavorites})(AlbumList))
+export default withRouter(connect(mapStateToProps, {fetchArtists, getFavorites, deleteArtistFromFavorites, runSearch})(AlbumList))

@@ -10,7 +10,7 @@ export function runSearch(query){
     return fetch(URL)
       .then(res => res.json())
       .then(searchResult => {
-        // console.log('in runSearch', searchResult.topalbums.album);
+        console.log('in runSearch', searchResult.topalbums.album);
         dispatch({type: "RUN_SEARCH", payload: searchResult.topalbums.album})
     })
   }
@@ -28,9 +28,78 @@ export function fetchArtists(){
   }
 }
 
-export function addArtistToFavorites(artist) {
+export function fetchOneArtist(artist){
+  const URL = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + artist + API_KEY
+  return (dispatch) => {
+    return fetch(URL)
+      .then(res => res.json())
+      .then(artist => {
+        console.log('in fetchOneArtist', artist);
+        dispatch({type: "FETCH_ONE_ARTIST", payload: artist})
+    })
+  }
+}
+
+export function addOneArtist(artist){
   return (dispatch) => {
     return fetch(URL + "/artists", {
+    headers: headers,
+    method: "POST",
+    body: JSON.stringify({
+      name: artist.name,
+      image: artist.image,
+      listeners: artist.stats.listeners,
+      playcount: artist.stats.playcount,
+      url: artist.url,
+      mbid: artist.mbid,
+    })
+  })
+  .then(res => res.json())
+  .then(console.log)
+  }
+}
+
+export function addArtists(artist) {
+  return (dispatch) => {
+    return fetch(URL + "/artists", {
+      headers: headers,
+      method: "POST",
+      body: JSON.stringify({
+        name: artist.name,
+        image: artist.image,
+        listeners: artist.listeners,
+        playcount: artist.playcount,
+        url: artist.url,
+        mbid: artist.mbid,
+      })
+    })
+    .then(res => res.json())
+    // .then(console.log)
+  }
+}
+
+export function addAlbums(album) {
+  return (dispatch) => {
+    return fetch(URL + "/albums", {
+      headers: headers,
+      method: "POST",
+      body: JSON.stringify({
+        name: album.name,
+        image: album.image,
+        playcount: album.playcount,
+        url: album.url,
+        mbid: album.artist.mbid,
+        // album
+      })
+    })
+    .then(res => res.json())
+    // .then(console.log)
+  }
+}
+
+export function addArtistToFavorites(artist) {
+  return (dispatch) => {
+    return fetch(URL + "/favorite_artists", {
       headers: headers,
       method: "POST",
       body: JSON.stringify({
@@ -47,9 +116,22 @@ export function addArtistToFavorites(artist) {
   }
 }
 
+
+export function addAlbumToFavorites(album) {
+  return (dispatch) => {
+    return fetch(URL + "/favorite_albums", {
+      headers: headers,
+      method: "POST",
+      body: JSON.stringify(album)
+    })
+    .then(res => res.json())
+    .then(console.log)
+  }
+}
+
 export function deleteArtistFromFavorites(artist) {
   return (dispatch) => {
-    return fetch(`${URL}/artists/${artist.id}`, {
+    return fetch(`${URL}/favorite_artists/${artist.id}`, {
       method: "DELETE",
     })
     .then(res => res.json())
@@ -61,7 +143,7 @@ export function deleteArtistFromFavorites(artist) {
 
 export function getFavorites(){
   return (dispatch) => {
-    return fetch(URL + "/artists")
+    return fetch(URL + "/favorite_artists")
     .then(res => res.json())
     .then(favorites => {
       dispatch({type: "GET_FAVORITES", payload: favorites})

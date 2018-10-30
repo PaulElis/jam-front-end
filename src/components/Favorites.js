@@ -26,7 +26,7 @@ class Favorites extends Component {
         this.setState({
           favorites: newArray
         })
-      console.log(artistIndex, newArray);
+      // console.log(`Deleted artist index: ${artistIndex}, new Favorites_Artists array:`,  newArray);
     this.props.deleteArtistFromFavorites(artist)
   }
 

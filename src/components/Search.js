@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/Search.css'
 import search from '../images/search.png'
 
-import { runSearch } from '../actions/actions'
+import { runSearch, addAlbums, addArtists, fetchOneArtist, addOneArtist, fetchArtists } from '../actions/actions'
 import { connect } from 'react-redux'
 import { withRouter} from 'react-router-dom'
 
@@ -19,13 +19,21 @@ class Search extends Component {
 
   search = (event) => {
     event.preventDefault()
-    // console.log('in search query', this.state.query);
       this.props.runSearch(this.state.query)
-        .then(()=> this.props.history.push('/albums'))
-  };
+      .then(() => console.log('props', this.props))
+      .then(() => this.props.albums.map(album =>
+        this.props.addAlbums(album)))
+        .then(() => this.props.history.push('/albums'),
+          this.setState({ query: '' })
+        )
+        // .then(() => console.log('props albums[0].artist.name', this.props.albums[0].artist.name))
+        .then(() => this.props.fetchOneArtist(this.props.albums[0].artist.name))
+          // .then(() => console.log('props one_artist', this.props.one_artist.artist))
+          .then(() => this.props.addOneArtist(this.props.one_artist.artist))
+  }
 
   render() {
-    // console.log(this.state.query);
+    // console.log('props.albums[0]', this.props.albums);
     return (
       <div id='search-container'>
         <form id='search-form-container' onSubmit={this.search}>
@@ -47,8 +55,9 @@ class Search extends Component {
 
 function mapStateToProps(state){
   return {
-    // albums: state.albums.topalbums,
+    albums: state.albums,
+    one_artist: state.one_artist,
   }
 }
 
-export default withRouter(connect(mapStateToProps, {runSearch})(Search))
+export default withRouter(connect(mapStateToProps, {runSearch, addAlbums, addArtists, fetchOneArtist, addOneArtist, fetchArtists})(Search))

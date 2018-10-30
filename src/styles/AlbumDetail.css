@@ -6,13 +6,15 @@ div#albumdetail-container{
 
 div#card-header-upper-container{
   background-color: #FAD397;
+  padding-top: 1%;
 }
 
 div#card-header-container{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0% 2% 0% 2%;
+  align-items: center;
+  padding: 0% 2%;
 }
 
 span.card-header{
@@ -29,6 +31,7 @@ span.card-header{
 
 #card-header-link a:hover{
   color: #aaa;
+  transition: 1s;
 }
 
 img#album-image{
@@ -54,14 +57,15 @@ div#card-header-upper-container{
 }
 
 div#card-header-container{
-  /* display: flex;
+  height: 2em;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0% 2% 0% 2%; */
+  padding: 0% 2%;
 }
 
 span.card-header{
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
 
 #card-header-link a{
@@ -100,6 +104,8 @@ div#card-header-upper-container{
 }
 
 div#card-header-container{
+  /* height: 2em; */
+  align-items: center;
   /* display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -107,7 +113,7 @@ div#card-header-container{
 }
 
 span.card-header{
-  font-size: 2vw;
+  font-size: 1.25vw;
 }
 
 #card-header-link a{

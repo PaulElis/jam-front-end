@@ -8,7 +8,7 @@ import '../styles/AlbumDetail.css'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { addArtistToFavorites, deleteArtistFromFavorites } from '../actions/actions'
+import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites } from '../actions/actions'
 
 
 class AlbumDetail extends Component {
@@ -46,7 +46,7 @@ class AlbumDetail extends Component {
                   <a href={this.props.artist.url} target="_blank" rel="noopener noreferrer">{this.props.artist.name}</a> :
                     this.props.album.name !== '(null)' ?
                   <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.props.album.name}</a> :
-                    <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">`${this.props.album.artist.name}'s Untitled Album`</a>}
+                    <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.props.album.artist.name}'s Untitled Album</a>}
                 </span>
 
                 <span className='card-header'> {this.props.artist ? this.numberFormat(this.props.artist.listeners) :
@@ -60,13 +60,15 @@ class AlbumDetail extends Component {
               id='album-image'
               src={this.props.image ? this.props.image : record}
               alt='oh no!'
-              onClick={() => {this.props.favorite ? this.props.deleteArtist(this.props.favorite) : this.props.addArtistToFavorites(this.props.artist)}}
+              onClick={() => {this.props.favorite ? this.props.deleteArtist(this.props.favorite)
+                : this.props.artist ? this.props.addArtistToFavorites(this.props.artist)
+                : this.props.addAlbumToFavorites(this.props.album)}}
               onError={(e) => { e.target.src = record /*replacement image*/ }} />
           </CardSection>
 
           <CardSection>
             <Button link={this.props.artist ? this.props.artist.url : this.props.album.url}>
-              {this.props.artist ? 'View Arist' : 'View Album'}
+              {this.props.artist ? 'View Artist' : 'View Album'}
             </Button>
           </CardSection>
         </Card>
@@ -81,4 +83,4 @@ class AlbumDetail extends Component {
 //   }
 // }
 
-export default withRouter(connect(null, {addArtistToFavorites, deleteArtistFromFavorites})(AlbumDetail))
+export default withRouter(connect(null, {addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites})(AlbumDetail))
