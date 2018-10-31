@@ -3,22 +3,22 @@ import AlbumDetail from './AlbumDetail.js'
 import '../styles/AlbumList.css'
 // import MediaQuery from 'react-responsive';
 
-import { fetchArtists, getFavorites, deleteArtistFromFavorites, runSearch } from '../actions/actions'
+import { getFavorites, deleteArtistFromFavorites, runSearch } from '../actions/actions'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 class AlbumList extends Component {
   state = {
     albums: [],
-    artists: [],
     favorites: [],
+    new_artists: [],
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     // console.log('nextProps', nextProps.artists);
     return {
       albums: nextProps.albums === [] ? [] : nextProps.albums,
-      artists: nextProps.artists === [] ? [] : nextProps.artists,
+      new_artists: nextProps.new_artists === [] ? [] : nextProps.new_artists,
       favorites: nextProps.favorites === [] ? [] : nextProps.favorites,
     }
   }
@@ -33,9 +33,10 @@ class AlbumList extends Component {
   }
 
   renderArtists = () => {
-    return this.state.artists.map(artist =>
-      <AlbumDetail key={artist.url} artist={artist} image={artist.image[3]['#text']}/>
-    )
+    console.log('in renderArtists', this.state.new_artists);
+    // return this.state.new_artists.map(artist =>
+      return <AlbumDetail key={this.state.new_artists.url} artist={this.state.new_artists} image={this.state.new_artists.image[3]['#text']}/>
+    // )
   }
 
   renderAlbums = () => {
@@ -44,11 +45,11 @@ class AlbumList extends Component {
   }
 
   render() {
-    // console.log('AlbumList state:', this.state)
+    console.log('AlbumList state:', this.state)
     // console.log('AlbumList props', this.props)
     return (
       <div id='albumlist-container'>
-        {this.state.favorites ? this.renderFavorites() : this.state.artists ?
+        {this.state.favorites.length !== 0 ? this.renderFavorites() : this.state.new_artists.length !== 0 ?
           this.renderArtists() : this.renderAlbums()}
       </div>
     );
@@ -58,9 +59,9 @@ class AlbumList extends Component {
 function mapStateToProps(state){
   return {
     albums: state.albums,
-    artists: state.artists,
     favorites: state.favorites,
+    new_artists: state.new_artists,
   }
 }
 
-export default withRouter(connect(mapStateToProps, {fetchArtists, getFavorites, deleteArtistFromFavorites, runSearch})(AlbumList))
+export default withRouter(connect(mapStateToProps, {getFavorites, deleteArtistFromFavorites, runSearch})(AlbumList))

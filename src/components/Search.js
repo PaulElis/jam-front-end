@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/Search.css'
 import search from '../images/search.png'
 
-import { runSearch, addAlbums, addArtists, fetchOneArtist, addOneArtist, fetchArtists } from '../actions/actions'
+import { runSearch, addAlbums, addArtists, fetchFullArtistInfo, addOneArtist, fetchTopArtists } from '../actions/actions'
 import { connect } from 'react-redux'
 import { withRouter} from 'react-router-dom'
 
@@ -20,16 +20,16 @@ class Search extends Component {
   search = (event) => {
     event.preventDefault()
       this.props.runSearch(this.state.query)
-      .then(() => console.log('props', this.props))
+      // .then(() => console.log('props', this.props))
       .then(() => this.props.albums.map(album =>
         this.props.addAlbums(album)))
         .then(() => this.props.history.push('/albums'),
           this.setState({ query: '' })
         )
-        // .then(() => console.log('props albums[0].artist.name', this.props.albums[0].artist.name))
-        .then(() => this.props.fetchOneArtist(this.props.albums[0].artist.name))
-          // .then(() => console.log('props one_artist', this.props.one_artist.artist))
-          .then(() => this.props.addOneArtist(this.props.one_artist.artist))
+        .then(() => this.props.fetchFullArtistInfo(this.props.albums[0].artist.name))
+          // .then(() => console.log('props albums[0].artist.name', this.props.albums[0].artist.name))
+          .then(() => this.props.addOneArtist(this.props.new_artists.artist))
+            // .then(() => console.log('props new_artists', this.props.new_artists.artist))
   }
 
   render() {
@@ -56,8 +56,8 @@ class Search extends Component {
 function mapStateToProps(state){
   return {
     albums: state.albums,
-    one_artist: state.one_artist,
+    new_artists: state.new_artists,
   }
 }
 
-export default withRouter(connect(mapStateToProps, {runSearch, addAlbums, addArtists, fetchOneArtist, addOneArtist, fetchArtists})(Search))
+export default withRouter(connect(mapStateToProps, {runSearch, addAlbums, addArtists, fetchFullArtistInfo, addOneArtist, fetchTopArtists})(Search))

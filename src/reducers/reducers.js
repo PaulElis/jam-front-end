@@ -3,6 +3,7 @@ const defaultState = {
   albums: [],
   artists: [],
   favorites: [],
+  new_artists: [],
 }
 
 export default function(state=defaultState, action){
@@ -10,9 +11,9 @@ export default function(state=defaultState, action){
     case "RUN_SEARCH":
       return {albums: action.payload}
     case "FETCH_ONE_ARTIST":
-      return {...state, one_artist: action.payload}
-    case "FETCH_ARTISTS":
-      return {artists: action.payload}
+      return {...state, new_artists: action.payload}
+    case "FETCH_TOP_ARTIST_NAMES":
+      return {...state, artist_names: action.payload}
     case "GET_FAVORITES":
       return {...state, favorites: action.payload}
     default:

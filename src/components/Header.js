@@ -4,14 +4,14 @@ import Search from './Search.js'
 import '../styles/Header.css'
 import favorites from '../images/favorites.png'
 
-import { runSearch, fetchArtists } from '../actions/actions'
+import { runSearch, fetchTopArtists } from '../actions/actions'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom";
 
 class Header extends Component {
 
   renderTopArtists = () => {
-    this.props.fetchArtists()
+    this.props.fetchTopArtists()
       .then(()=>
         this.props.history.push('/home'))
   }
@@ -42,4 +42,4 @@ function mapStateToProps(state){
   }
 }
 
-export default withRouter(connect(mapStateToProps, {runSearch, fetchArtists})(Header))
+export default withRouter(connect(mapStateToProps, {runSearch, fetchTopArtists})(Header))

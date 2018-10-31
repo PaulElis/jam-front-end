@@ -16,26 +16,28 @@ export function runSearch(query){
   }
 }
 
-export function fetchArtists(){
+export function fetchTopArtists(){
   const URL = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists' + API_KEY
   return (dispatch) => {
     return fetch(URL)
       .then(res => res.json())
       .then(artists => {
-        // console.log('in fetchArtists', artists.artists.artist);
-        dispatch({type: "FETCH_ARTISTS", payload: artists.artists.artist})
+        const artistNames = artists.artists.artist.map((artist) => artist.name)
+        // console.log('in fetchArtists', artist);
+        dispatch({type: "FETCH_TOP_ARTIST_NAMES", payload: artistNames})
     })
   }
 }
 
-export function fetchOneArtist(artist){
+export function fetchFullArtistInfo(artist){
   const URL = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + artist + API_KEY
   return (dispatch) => {
     return fetch(URL)
       .then(res => res.json())
       .then(artist => {
-        console.log('in fetchOneArtist', artist);
-        dispatch({type: "FETCH_ONE_ARTIST", payload: artist})
+        // const new_artists = artists.artists.artist.map((artist) => artist.name)
+        // console.log('in fetchOneArtist artist:', artist.artist);
+        dispatch({type: "FETCH_ONE_ARTIST", payload: artist.artist})
     })
   }
 }
@@ -50,12 +52,13 @@ export function addOneArtist(artist){
       image: artist.image,
       listeners: artist.stats.listeners,
       playcount: artist.stats.playcount,
+      bio: artist.bio.content,
       url: artist.url,
       mbid: artist.mbid,
     })
   })
   .then(res => res.json())
-  .then(console.log)
+  // .then(console.log)
   }
 }
 

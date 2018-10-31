@@ -6,22 +6,46 @@ import AlbumList from './components/AlbumList.js'
 import Favorites from './components/Favorites.js'
 import Home from './components/Home.js'
 
-import { runSearch, fetchArtists, addArtists } from '../src/actions/actions'
+import { runSearch, fetchTopArtists, fetchFullArtistInfo, addOneArtist, addArtists } from '../src/actions/actions'
 import {Route, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class App extends Component {
 
+  state = {
+    new_artists: [],
+  }
+
+  static getDerivedStateFromProps = (nextProps, prevState) => {
+    return {
+      new_artists: nextProps.new_artists === [] ? [] : nextProps.new_artists,
+    }
+  }
+
   initialRender = () => {
-    this.props.fetchArtists()
-      .then(() => this.props.artists.map(artist =>
-        this.props.addArtists(artist)))
-        .then(()=>
-          this.props.history.push('/home'))
+    this.props.fetchTopArtists()
+      .then(() => console.log('state', this.state))
+    // fetching artists full info
+      .then(() => this.props.artist_names.map(name =>
+        this.props.fetchFullArtistInfo(name)))
+    // adding each artist method
+        // .then(() => console.log('props', this.props))
+        // .then(() => this.props.new_artists.map(artist =>
+        //   this.props.addOneArtist(artist)))
+        //   .then(()=>
+        //     this.props.history.push('/home'))
+    .then(() => this.secondHalf())
+  }
+
+  secondHalf = () => {
+    console.log('secondHalf', this.state)
+    this.state.new_artists.map(artist =>
+      this.props.addOneArtist(artist))
+        this.props.history.push('/home')
   }
 
   componentDidMount(){
-    this.props.artists.length === 0 ? this.initialRender() : this.props.history.push('/albums')
+    this.props.albums.length === 0 ? this.initialRender() : this.props.history.push('/albums')
   }
 
   render() {
@@ -43,8 +67,9 @@ class App extends Component {
 function mapStateToProps(state){
   return {
     albums: state.albums,
-    artists: state.artists,
+    artist_names: state.artist_names,
+    new_artists: state.new_artists,
   }
 }
 
-export default withRouter(connect(mapStateToProps, {runSearch, fetchArtists, addArtists})(App));
+export default withRouter(connect(mapStateToProps, {runSearch, fetchTopArtists, fetchFullArtistInfo, addOneArtist, addArtists})(App));
