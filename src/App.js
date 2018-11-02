@@ -24,24 +24,17 @@ class App extends Component {
 
   initialRender = () => {
     this.props.fetchTopArtists()
-      .then(() => console.log('state', this.state))
+      // .then(() => console.log('state', this.state))
     // fetching artists full info
-      .then(() => this.props.artist_names.map(name =>
-        this.props.fetchFullArtistInfo(name)))
-    // adding each artist method
-        // .then(() => console.log('props', this.props))
-        // .then(() => this.props.new_artists.map(artist =>
-        //   this.props.addOneArtist(artist)))
-        //   .then(()=>
-        //     this.props.history.push('/home'))
-    .then(() => this.secondHalf())
+      // .then(() => this.props.artist_names.map(name =>
+      //   this.props.fetchFullArtistInfo(name)))
+      .then(() => this.props.history.push('/home'))
   }
 
   secondHalf = () => {
-    console.log('secondHalf', this.state)
-    this.state.new_artists.map(artist =>
-      this.props.addOneArtist(artist))
-        this.props.history.push('/home')
+    // this.state.new_artists.map(artist =>
+    //   this.props.addOneArtist(artist))
+    //     this.props.history.push('/home')
   }
 
   componentDidMount(){

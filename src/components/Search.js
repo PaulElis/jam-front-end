@@ -20,16 +20,12 @@ class Search extends Component {
   search = (event) => {
     event.preventDefault()
       this.props.runSearch(this.state.query)
-      // .then(() => console.log('props', this.props))
-      .then(() => this.props.albums.map(album =>
-        this.props.addAlbums(album)))
-        .then(() => this.props.history.push('/albums'),
-          this.setState({ query: '' })
-        )
-        .then(() => this.props.fetchFullArtistInfo(this.props.albums[0].artist.name))
-          // .then(() => console.log('props albums[0].artist.name', this.props.albums[0].artist.name))
-          .then(() => this.props.addOneArtist(this.props.new_artists.artist))
-            // .then(() => console.log('props new_artists', this.props.new_artists.artist))
+      .then(() => this.props.fetchFullArtistInfo(this.props.albums[0].artist.name))
+        .then(() => this.props.addOneArtist(this.props.full_artist_info))
+          .then(() => this.props.albums.map(album =>
+            this.props.addAlbums(album)))
+            .then(() => this.props.history.push('/albums'),
+              this.setState({ query: '' }))
   }
 
   render() {
@@ -56,7 +52,7 @@ class Search extends Component {
 function mapStateToProps(state){
   return {
     albums: state.albums,
-    new_artists: state.new_artists,
+    full_artist_info: state.full_artist_info,
   }
 }
 

@@ -9,17 +9,16 @@ import { withRouter } from 'react-router-dom'
 
 class AlbumList extends Component {
   state = {
-    albums: [],
-    favorites: [],
-    new_artists: [],
+    // albums: [],
+    // favorites: [],
+    // top_artists: [],
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    // console.log('nextProps', nextProps.artists);
     return {
       albums: nextProps.albums === [] ? [] : nextProps.albums,
-      new_artists: nextProps.new_artists === [] ? [] : nextProps.new_artists,
-      favorites: nextProps.favorites === [] ? [] : nextProps.favorites,
+      // favorites: nextProps.favorites === [] ? [] : nextProps.favorites,
+      top_artists: nextProps.top_artists === [] ? [] : nextProps.top_artists,
     }
   }
 
@@ -28,15 +27,16 @@ class AlbumList extends Component {
   }
 
   renderFavorites = () => {
-    return this.state.favorites.map(favorite =>
+    // console.log('in renderFavorites');
+    return this.props.favorites.map(favorite =>
       <AlbumDetail key={favorite.url} artist={favorite} deleteArtist={this.props.deleteArtist} favorite={favorite} image={favorite.image}/>)
   }
 
-  renderArtists = () => {
-    console.log('in renderArtists', this.state.new_artists);
-    // return this.state.new_artists.map(artist =>
-      return <AlbumDetail key={this.state.new_artists.url} artist={this.state.new_artists} image={this.state.new_artists.image[3]['#text']}/>
-    // )
+  renderTopArtists = () => {
+    // console.log('in renderTopArtists', this.state.top_artists);
+    return this.state.top_artists.map(artist =>
+      <AlbumDetail key={artist.url} artist={artist} image={artist.image[3]['#text']}/>
+    )
   }
 
   renderAlbums = () => {
@@ -45,12 +45,13 @@ class AlbumList extends Component {
   }
 
   render() {
-    console.log('AlbumList state:', this.state)
+    // console.log('AlbumList state:', this.state)
     // console.log('AlbumList props', this.props)
     return (
       <div id='albumlist-container'>
-        {this.state.favorites.length !== 0 ? this.renderFavorites() : this.state.new_artists.length !== 0 ?
-          this.renderArtists() : this.renderAlbums()}
+        {this.props.favorites ?
+          this.renderFavorites() : this.state.top_artists ?
+          this.renderTopArtists() : this.renderAlbums()}
       </div>
     );
   }
@@ -59,8 +60,8 @@ class AlbumList extends Component {
 function mapStateToProps(state){
   return {
     albums: state.albums,
-    favorites: state.favorites,
-    new_artists: state.new_artists,
+    // favorites: state.favorites,
+    top_artists: state.top_artists,
   }
 }
 

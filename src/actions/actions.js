@@ -10,7 +10,7 @@ export function runSearch(query){
     return fetch(URL)
       .then(res => res.json())
       .then(searchResult => {
-        console.log('in runSearch', searchResult.topalbums.album);
+        // console.log('in runSearch', searchResult.topalbums.album);
         dispatch({type: "RUN_SEARCH", payload: searchResult.topalbums.album})
     })
   }
@@ -22,9 +22,9 @@ export function fetchTopArtists(){
     return fetch(URL)
       .then(res => res.json())
       .then(artists => {
-        const artistNames = artists.artists.artist.map((artist) => artist.name)
-        // console.log('in fetchArtists', artist);
-        dispatch({type: "FETCH_TOP_ARTIST_NAMES", payload: artistNames})
+        // const artistNames = artists.artists.artist.map((artist) => artist.name)
+        // console.log('in fetchArtists', artists.artists.artist);
+        dispatch({type: "FETCH_TOP_ARTISTS", payload: artists.artists.artist})
     })
   }
 }
@@ -43,6 +43,7 @@ export function fetchFullArtistInfo(artist){
 }
 
 export function addOneArtist(artist){
+  // console.log('in addOneArtist', artist);
   return (dispatch) => {
     return fetch(URL + "/artists", {
     headers: headers,
@@ -121,6 +122,7 @@ export function addArtistToFavorites(artist) {
 
 
 export function addAlbumToFavorites(album) {
+  // console.log('in addAlbumToFavorites')
   return (dispatch) => {
     return fetch(URL + "/favorite_albums", {
       headers: headers,
