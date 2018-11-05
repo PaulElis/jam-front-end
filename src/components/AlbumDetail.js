@@ -56,14 +56,24 @@ class AlbumDetail extends Component {
           </div>
 
           <CardSection>
-            <img
-              id='album-image'
-              src={this.props.image ? this.props.image : record}
-              alt='oh no!'
-              onClick={() => {this.props.favorite ? this.props.deleteArtist(this.props.favorite)
-                : this.props.artist ? this.props.addArtistToFavorites(this.props.artist)
-                : this.props.addAlbumToFavorites(this.props.album)}}
-              onError={(e) => { e.target.src = record /*replacement image*/ }} />
+            <div id='image-container'>
+              <img
+                id='album-image'
+                src={this.props.image ? this.props.image : record}
+                alt='oh no!'
+                onClick={() => {this.props.favorite ? this.props.deleteArtist(this.props.favorite)
+                  : this.props.artist ? this.props.addArtistToFavorites(this.props.artist)
+                  : this.props.addAlbumToFavorites(this.props.album)}}
+                onError={(e) => { e.target.src = record /*replacement image*/ }} />
+              <div
+                id='clickable'
+                onClick={() => {this.props.favorite ? this.props.deleteArtist(this.props.favorite)
+                  : this.props.artist ? this.props.addArtistToFavorites(this.props.artist)
+                  : this.props.addAlbumToFavorites(this.props.album)}} >
+                    {this.props.favorite ? <p>Remove from Favorites</p>
+                      : <p>Add to Favorites</p>}
+              </div>
+            </div>
           </CardSection>
 
           <CardSection>
