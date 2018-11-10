@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header.js'
-import About from './components/About.js'
+// import About from './components/About.js'
 import AlbumList from './components/AlbumList.js'
 import Favorites from './components/Favorites.js'
 import Home from './components/Home.js'
@@ -50,7 +50,6 @@ class App extends Component {
         </header>
           <Route exact path="/home" component={Home}/>
           <Route exact path="/favorites" component={Favorites}/>
-          <Route exact path="/about" component={About}/>
           <Route exact path="/albums" component={AlbumList}/>
       </div>
     );

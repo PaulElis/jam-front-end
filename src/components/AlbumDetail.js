@@ -8,7 +8,7 @@ import '../styles/AlbumDetail.css'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites } from '../actions/actions'
+import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, fetchFullArtistInfo } from '../actions/actions'
 
 
 class AlbumDetail extends Component {
@@ -28,6 +28,20 @@ class AlbumDetail extends Component {
        : Math.abs(Number(num)) >= 1.0e+3
        ? Math.round(Number(num).toString().slice(0,3)) + "K"
        : Math.abs(Number(num));
+  }
+
+  addAlbumToFavorites = (album) => {
+    console.log(album);
+    console.log('this.props.artist:', this.props);
+    this.props.fetchFullArtistInfo(album.artist.name)
+    .then(() => this.props.addArtistToFavorites(this.props.full_artist_info))
+    .then(() => this.props.addAlbumToFavorites(album))
+  }
+
+  albumClick = () => {
+    this.props.favorite ? this.props.deleteArtist(this.props.favorite)
+      : this.props.artist ? this.props.addArtistToFavorites(this.props.artist)
+      : this.addAlbumToFavorites(this.props.album)
   }
 
   render() {
@@ -61,23 +75,22 @@ class AlbumDetail extends Component {
                 id='album-image'
                 src={this.props.image ? this.props.image : record}
                 alt='oh no!'
-                onClick={() => {this.props.favorite ? this.props.deleteArtist(this.props.favorite)
-                  : this.props.artist ? this.props.addArtistToFavorites(this.props.artist)
-                  : this.props.addAlbumToFavorites(this.props.album)}}
+                onClick={this.albumClick}
                 onError={(e) => { e.target.src = record /*replacement image*/ }} />
               <div
                 id='clickable'
-                onClick={() => {this.props.favorite ? this.props.deleteArtist(this.props.favorite)
-                  : this.props.artist ? this.props.addArtistToFavorites(this.props.artist)
-                  : this.props.addAlbumToFavorites(this.props.album)}} >
+                onClick={this.albumClick} >
                     {this.props.favorite ? <p>Remove from Favorites</p>
-                      : <p>Add to Favorites</p>}
+                    : <p>Add to Favorites</p>}
               </div>
             </div>
           </CardSection>
 
           <CardSection>
-            <Button link={this.props.artist ? this.props.artist.url : this.props.album.url}>
+            <Button
+              id='view-button'
+              link={this.props.artist ? this.props.artist.url : this.props.album.url}
+              >
               {this.props.artist ? 'View Artist' : 'View Album'}
             </Button>
           </CardSection>
@@ -87,10 +100,10 @@ class AlbumDetail extends Component {
   }
 }
 
-// function mapStateToProps(state){
-//   return {
-//     favorites: state.favorites,
-//   }
-// }
+function mapStateToProps(state){
+  return {
+    full_artist_info: state.full_artist_info,
+  }
+}
 
-export default withRouter(connect(null, {addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites})(AlbumDetail))
+export default withRouter(connect(mapStateToProps, {addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, fetchFullArtistInfo})(AlbumDetail))

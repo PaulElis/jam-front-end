@@ -19,13 +19,13 @@ class Search extends Component {
 
   search = (event) => {
     event.preventDefault()
-      this.props.runSearch(this.state.query)
-      .then(() => this.props.fetchFullArtistInfo(this.props.albums[0].artist.name))
-        .then(() => this.props.addOneArtist(this.props.full_artist_info))
-          .then(() => this.props.albums.map(album =>
-            this.props.addAlbums(album)))
-            .then(() => this.props.history.push('/albums'),
-              this.setState({ query: '' }))
+    this.props.runSearch(this.state.query)
+    .then(() => this.props.fetchFullArtistInfo(this.props.albums[0].artist.name))
+    .then(() => this.props.addOneArtist(this.props.full_artist_info))
+    .then(() => this.props.albums.map(album =>
+      this.props.addAlbums(album, this.props.full_artist_info)))
+    .then(() => this.props.history.push('/albums'),
+      this.setState({ query: '' }))
   }
 
   render() {

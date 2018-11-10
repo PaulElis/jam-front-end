@@ -29,8 +29,8 @@ export function fetchTopArtists(){
   }
 }
 
-export function fetchFullArtistInfo(artist){
-  const URL = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + artist + API_KEY
+export function fetchFullArtistInfo(artistName){
+  const URL = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + artistName + API_KEY
   return (dispatch) => {
     return fetch(URL)
       .then(res => res.json())
@@ -82,7 +82,7 @@ export function addArtists(artist) {
   }
 }
 
-export function addAlbums(album) {
+export function addAlbums(album, artist) {
   return (dispatch) => {
     return fetch(URL + "/albums", {
       headers: headers,
@@ -92,7 +92,7 @@ export function addAlbums(album) {
         image: album.image,
         playcount: album.playcount,
         url: album.url,
-        mbid: album.artist.mbid,
+        artist: artist,
         // album
       })
     })
