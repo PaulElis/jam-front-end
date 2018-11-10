@@ -102,18 +102,12 @@ export function addAlbums(album, artist) {
 }
 
 export function addArtistToFavorites(artist) {
+  console.log(artist);
   return (dispatch) => {
     return fetch(URL + "/favorite_artists", {
       headers: headers,
       method: "POST",
-      body: JSON.stringify({
-        name: artist.name,
-        image: artist.image,
-        listeners: artist.listeners,
-        playcount: artist.playcount,
-        url: artist.url,
-        mbid: artist.mbid,
-      })
+      body: JSON.stringify({artist})
     })
     .then(res => res.json())
     .then(console.log)
@@ -127,8 +121,7 @@ export function addAlbumToFavorites(album) {
     return fetch(URL + "/favorite_albums", {
       headers: headers,
       method: "POST",
-      body: JSON.stringify(album)
-    })
+      body: JSON.stringify(album)})
     .then(res => res.json())
     .then(console.log)
   }

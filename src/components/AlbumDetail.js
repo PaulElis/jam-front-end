@@ -38,9 +38,17 @@ class AlbumDetail extends Component {
     .then(() => this.props.addAlbumToFavorites(album))
   }
 
+  addArtistToFavorites = (artist) => {
+    // console.log('in addArtistToFavorites artist:', artist);
+    this.props.fetchFullArtistInfo(artist.name)
+    // .then(() => console.log('full_artist_info:', this.props.full_artist_info))
+    .then(() => this.props.addArtistToFavorites(this.props.full_artist_info))
+    // .then(() => this.props.addAlbumToFavorites(album))
+  }
+
   albumClick = () => {
     this.props.favorite ? this.props.deleteArtist(this.props.favorite)
-      : this.props.artist ? this.props.addArtistToFavorites(this.props.artist)
+      : this.props.artist ? this.addArtistToFavorites(this.props.artist)
       : this.addAlbumToFavorites(this.props.album)
   }
 
