@@ -17,22 +17,17 @@ a#button:hover{
   background-color: #eee;
 }
 
+@media only screen and (min-width: 576px) {
+a#button{
+  font-size: 1vw;
+  padding: 1% 38%;
+}
+}
+
 @media only screen and (min-width: 768px) {
 a#button{
   font-size: 1vw;
   padding: 1% 35%;
-  /* color: #000;
-  font-weight: bold;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-bottom: 5%; */
-}
-
-a#button:hover{
-  /* transition: 1s;
-  background-color: #eee; */
 }
 }
 
@@ -40,17 +35,5 @@ a#button:hover{
 a#button{
   font-size: .75vw;
   padding: 1% 38%;
-  /* color: #000;
-  font-weight: bold;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-bottom: 5%; */
-}
-
-a#button:hover{
-  /* transition: 1s;
-  background-color: #eee; */
 }
 }

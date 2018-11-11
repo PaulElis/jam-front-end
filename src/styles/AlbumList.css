@@ -2,6 +2,15 @@ div#albumlist-container{
   padding: 5%;
 }
 
+@media only screen and (min-width: 576px) {
+  div#albumlist-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0%;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   div#albumlist-container{
     width: 100%;
