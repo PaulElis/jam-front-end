@@ -134,7 +134,7 @@ export function deleteArtistFromFavorites(artist) {
     })
     .then(res => res.json())
     .then(json => {
-      dispatch({type: "GET_FAVORITES", payload: json.favorites})
+      dispatch({type: "GET_FAVORITE_ARTISTS", payload: json.favorites})
     })
   }
 }
@@ -144,7 +144,7 @@ export function getFavorites(){
     return fetch(URL + "/favorite_artists")
     .then(res => res.json())
     .then(favorites => {
-      dispatch({type: "GET_FAVORITES", payload: favorites})
+      dispatch({type: "GET_FAVORITE_ARTISTS", payload: favorites})
     })
   }
 }

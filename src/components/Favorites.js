@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/Favorites.css'
 import AlbumList from './AlbumList.js'
+import FavoriteArtistsList from './favorites/FavoriteArtistsList.js'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -15,16 +16,16 @@ class Favorites extends Component {
   static getDerivedStateFromProps = (nextProps, prevState) => {
     // console.log('nextProps', nextProps.artists);
     return {
-      favorites: nextProps.favorites === [] ? [] : nextProps.favorites,
+      favorite_artists: nextProps.favorite_artists === [] ? [] : nextProps.favorite_artists,
     }
   }
 
   deleteArtist = (artist) => {
-    const artistIndex = this.state.favorites.indexOf(artist)
-    const newArray = [...this.state.favorites]
+    const artistIndex = this.state.favorite_artists.indexOf(artist)
+    const newArray = [...this.state.favorite_artists]
       newArray.splice(artistIndex, 1);
         this.setState({
-          favorites: newArray
+          favorite_artists: newArray
         })
       // console.log(`Deleted artist index: ${artistIndex}, new Favorites_Artists array:`,  newArray);
     this.props.deleteArtistFromFavorites(artist)
@@ -37,9 +38,10 @@ class Favorites extends Component {
   render() {
     // console.log('in Favorites props', this.props);
     // console.log('in Favorites state', this.state);
+    // <AlbumList favorites={this.state.favorites} deleteArtist={this.deleteArtist}/>
     return (
       <div id='favorites-container'>
-        <AlbumList favorites={this.state.favorites} deleteArtist={this.deleteArtist}/>
+        <FavoriteArtistsList favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
       </div>
     );
   }
@@ -47,7 +49,7 @@ class Favorites extends Component {
 
 function mapStateToProps(state){
   return {
-    favorites: state.favorites,
+    favorite_artists: state.favorite_artists,
   }
 }
 

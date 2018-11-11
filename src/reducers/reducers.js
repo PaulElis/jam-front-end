@@ -14,8 +14,8 @@ export default function(state=defaultState, action){
       return {...state, full_artist_info: action.payload}
     case "FETCH_TOP_ARTISTS":
       return {...state, top_artists: action.payload}
-    case "GET_FAVORITES":
-      return {...state, favorites: action.payload}
+    case "GET_FAVORITE_ARTISTS":
+      return {...state, favorite_artists: action.payload}
     default:
       return state
   }

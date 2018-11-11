@@ -90,8 +90,7 @@ class AlbumDetail extends Component {
           <CardSection>
             <Button
               id='view-button'
-              link={this.props.artist ? this.props.artist.url : this.props.album.url}
-              >
+              link={this.props.artist ? this.props.artist.url : this.props.album.url} >
               {this.props.artist ? 'View Artist' : 'View Album'}
             </Button>
           </CardSection>

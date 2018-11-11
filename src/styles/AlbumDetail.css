@@ -152,4 +152,8 @@ img#album-image:hover{
   opacity: .7;
 }
 
+div#clickable{
+  font-size: 1.5vw;
+}
+
 }
