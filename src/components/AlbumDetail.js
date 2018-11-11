@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Card from './Card.js'
 import CardSection from './CardSection.js'
 import Button from './Button.js'
-// import album from '../images/album.jpg'
 import record from '../images/record.png'
 import '../styles/AlbumDetail.css'
 

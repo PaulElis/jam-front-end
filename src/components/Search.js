@@ -12,20 +12,22 @@ class Search extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({
-      query: event.target.value
-    });
+    this.setState({ query: event.target.value });
   }
 
   search = (event) => {
     event.preventDefault()
     this.props.runSearch(this.state.query)
-    .then(() => this.props.fetchFullArtistInfo(this.props.albums[0].artist.name))
-    .then(() => this.props.addOneArtist(this.props.full_artist_info))
-    .then(() => this.props.albums.map(album =>
-      this.props.addAlbums(album, this.props.full_artist_info)))
-    .then(() => this.props.history.push('/albums'),
-      this.setState({ query: '' }))
+    .then(() => {
+      this.props.fetchFullArtistInfo(this.props.albums[0].artist.name)
+      .then(() => this.props.addOneArtist(this.props.full_artist_info))
+      .then(() => this.props.albums.map(album =>
+        this.props.addAlbums(album, this.props.full_artist_info)))
+      .then(() => this.props.history.push('/albums'),
+        this.setState({ query: '' }))
+      }, reasonForError => {
+        console.log('searchError:', reasonForError);
+    })
   }
 
   render() {
