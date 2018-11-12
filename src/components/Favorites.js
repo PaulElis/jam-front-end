@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/Favorites.css'
 // import AlbumList from './AlbumList.js'
 import FavoriteArtistsList from './favorites/FavoriteArtistsList.js'
+import FavoriteArtistsCard from './favorites/FavoriteArtistsCard.js'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -24,9 +25,7 @@ class Favorites extends Component {
     const artistIndex = this.state.favorite_artists.indexOf(artist)
     const newArray = [...this.state.favorite_artists]
       newArray.splice(artistIndex, 1);
-        this.setState({
-          favorite_artists: newArray
-        })
+        this.setState({ favorite_artists: newArray })
       // console.log(`Deleted artist index: ${artistIndex}, new Favorites_Artists array:`,  newArray);
     this.props.deleteArtistFromFavorites(artist)
   }
@@ -42,6 +41,7 @@ class Favorites extends Component {
     return (
       <div id='favorites-container'>
         <FavoriteArtistsList favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
+        <FavoriteArtistsCard />
       </div>
     );
   }
@@ -50,7 +50,6 @@ class Favorites extends Component {
 function mapStateToProps(state){
   return {
     favorite_artists: state.favorite_artists,
-    favorite_albums: state.favorite_albums,
   }
 }
 
