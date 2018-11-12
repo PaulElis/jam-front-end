@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Favorites.css'
-import AlbumList from './AlbumList.js'
+// import AlbumList from './AlbumList.js'
 import FavoriteArtistsList from './favorites/FavoriteArtistsList.js'
 
 import { connect } from 'react-redux'
@@ -50,6 +50,7 @@ class Favorites extends Component {
 function mapStateToProps(state){
   return {
     favorite_artists: state.favorite_artists,
+    favorite_albums: state.favorite_albums,
   }
 }
 

@@ -30,8 +30,9 @@ class AlbumDetail extends Component {
   }
 
   addAlbumToFavorites = (album) => {
-    this.addArtistToFavorites(album.artist)
-    this.props.addAlbumToFavorites(album)
+    this.props.fetchFullArtistInfo(album.artist.name)
+    .then(() => this.props.addArtistToFavorites(this.props.full_artist_info))
+    .then(() => this.props.addAlbumToFavorites(album))
   }
 
   addArtistToFavorites = (artist) => {
