@@ -41,7 +41,7 @@ class Favorites extends Component {
     return (
       <div id='favorites-container'>
         <FavoriteArtistsList favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
-        <FavoriteArtistsCard />
+        <FavoriteArtistsCard favorite_artists={this.state.favorite_artists} />
       </div>
     );
   }
