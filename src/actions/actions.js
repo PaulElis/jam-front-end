@@ -35,8 +35,6 @@ export function fetchFullArtistInfo(artistName){
     return fetch(URL)
       .then(res => res.json())
       .then(artist => {
-        // const new_artists = artists.artists.artist.map((artist) => artist.name)
-        // console.log('in fetchOneArtist artist:', artist.artist);
         dispatch({type: "FETCH_ONE_ARTIST", payload: artist.artist})
     })
   }
@@ -146,7 +144,11 @@ export function deleteAlbumFromFavorites(album) {
     })
     .then(res => res.json())
     .then(json => {
-      dispatch({type: "GET_FAVORITE_ARTISTS", payload: json.favorite_artists})
+      console.log('in deleteAlbumFromFavorites', json.favorite_artists);
+      dispatch({
+        type: "GET_FAVORITE_ARTISTS", payload: json.favorite_artists,
+        type: "GET_FAVORITE_ALBUMS", payload: json.favorite_albums
+      })
     })
   }
 }
@@ -156,7 +158,7 @@ export function getFavorites(){
     return fetch(URL + "/favorite_artists")
     .then(res => res.json())
     .then(favorites => {
-      dispatch({type: "GET_FAVORITE_ARTISTS", payload: favorites})
-    })
+      console.log('in getFavorites', favorites);
+      dispatch({type: "GET_FAVORITE_ARTISTS", payload: favorites}) })
   }
 }

@@ -20,6 +20,7 @@ class Favorites extends Component {
     // console.log('nextProps', nextProps.artists);
     return {
       favorite_artists: nextProps.favorite_artists === [] ? [] : nextProps.favorite_artists,
+      favorite_albums: nextProps.favorite_albums === [] ? [] : nextProps.favorite_albums,
     }
   }
 
@@ -44,12 +45,15 @@ class Favorites extends Component {
     const newArtistsArray = [...this.state.favorite_artists]
     const newAlbumsArray = [...favorite_albums]
     // console.log('albumIndex:', albumIndex);
-    // console.log('newAlbumsArray:', newAlbumsArray);
+    console.log('newAlbumsArray:', newAlbumsArray);
     console.log('newArtistsArray:', newArtistsArray);
       newAlbumsArray.splice(albumIndex, 1);
       // newAlbumsArray.splice(albumIndex, 1);
-        this.setState({ favorite_artists: newArtistsArray })
-      console.log(`Deleted album index: ${albumIndex}, new Favorites_Artists array:`,  newAlbumsArray);
+        this.setState({
+          favorite_artists: newArtistsArray,
+          favorite_albums: newAlbumsArray,
+         })
+      console.log(`Deleted album index: ${albumIndex}, newAlbumsArray:`,  newAlbumsArray);
     this.props.deleteAlbumFromFavorites(album)
   }
 
@@ -65,7 +69,7 @@ class Favorites extends Component {
       <div id='favorites-container'>
         <FavoriteArtistsList favorite_artists={this.state.favorite_artists} />
         <FavoriteArtistCard favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
-        <FavoriteArtistAlbums favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} deleteAlbum={this.deleteAlbum} />
+        <FavoriteArtistAlbums favorite_artists={this.state.favorite_artists} favorite_albums={this.state.favorite_albums} deleteArtist={this.deleteArtist} deleteAlbum={this.deleteAlbum} />
         <FavoriteArtistBio favorite_artists={this.state.favorite_artists} />
       </div>
     );
@@ -75,6 +79,7 @@ class Favorites extends Component {
 function mapStateToProps(state){
   return {
     favorite_artists: state.favorite_artists,
+    favorite_albums: state.favorite_albums,
   }
 }
 
