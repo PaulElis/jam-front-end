@@ -30,7 +30,7 @@ class AlbumDetail extends Component {
   }
 
   addAlbumToFavorites = (album) => {
-    console.log('album:', album);
+    // console.log('album:', album);
     this.props.fetchFullArtistInfo(album.artist.name)
     .then(() => this.props.addArtistToFavorites(this.props.full_artist_info))
     .then(() => this.props.addAlbumToFavorites(album))
@@ -42,21 +42,14 @@ class AlbumDetail extends Component {
   }
 
   albumClick = () => {
-    this.props.album && this.props.favorite_artists ? this.props.deleteAlbum(this.props.album)
+    this.props.album && this.props.favorite_artists !== undefined ? this.props.deleteAlbum(this.props.album)
       : this.props.favorite_artists ? this.props.deleteArtist(this.props.artist)
       : this.props.artist ? this.addArtistToFavorites(this.props.artist)
       : this.addAlbumToFavorites(this.props.album)
   }
-  // albumClick = () => {
-  //   this.props.favorite_artists ? this.props.deleteArtist(this.props.favorite_artists)
-  //     : this.props.artist ? this.addArtistToFavorites(this.props.artist)
-  //     : this.addAlbumToFavorites(this.props.album)
-  // }
 
   render() {
-    // console.log('in AlbumDetail');
-    console.log('AlbumDetail props', this.props);
-    // console.log('state', this.state);
+    // console.log('AlbumDetail props', this.props);
     return (
       <div id='albumdetail-container'>
         <Card>
