@@ -8,7 +8,7 @@ import FavoriteArtistBio from './favorites/FavoriteArtistBio.js'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { getFavorites, deleteArtistFromFavorites } from '../actions/actions'
+import { getFavorites, deleteArtistFromFavorites, deleteAlbumFromFavorites } from '../actions/actions'
 
 class Favorites extends Component {
 
@@ -49,7 +49,7 @@ class Favorites extends Component {
       // newAlbumsArray.splice(albumIndex, 1);
         this.setState({ favorite_artists: newArtistsArray })
       console.log(`Deleted album index: ${albumIndex}, new Favorites_Artists array:`,  newAlbumsArray);
-    // this.props.deleteArtistFromFavorites(album)
+    this.props.deleteAlbumFromFavorites(album)
   }
 
   componentDidMount(){
@@ -77,4 +77,4 @@ function mapStateToProps(state){
   }
 }
 
-export default withRouter(connect(mapStateToProps, {getFavorites, deleteArtistFromFavorites})(Favorites))
+export default withRouter(connect(mapStateToProps, {getFavorites, deleteArtistFromFavorites, deleteAlbumFromFavorites})(Favorites))
