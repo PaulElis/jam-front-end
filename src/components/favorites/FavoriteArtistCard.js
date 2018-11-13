@@ -6,7 +6,7 @@ class FavoriteArtistCard extends Component {
 
   renderAlbumDetail = () => {
     const firstArtist = this.props.favorite_artists[0]
-    return <AlbumDetail artist={firstArtist} favorite={firstArtist} image={firstArtist.image}/>
+    return <AlbumDetail artist={firstArtist} favorite={firstArtist} deleteArtist={this.props.deleteArtist} image={firstArtist.image} key={firstArtist.mbid}/>
   }
 
   render() {

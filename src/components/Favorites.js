@@ -24,12 +24,32 @@ class Favorites extends Component {
   }
 
   deleteArtist = (artist) => {
+    console.log('in deleteArtist', artist);
     const artistIndex = this.state.favorite_artists.indexOf(artist)
     const newArray = [...this.state.favorite_artists]
       newArray.splice(artistIndex, 1);
         this.setState({ favorite_artists: newArray })
       // console.log(`Deleted artist index: ${artistIndex}, new Favorites_Artists array:`,  newArray);
     this.props.deleteArtistFromFavorites(artist)
+  }
+
+  deleteAlbum = (album) => {
+    console.log(album);
+    const artistId = album.favorite_artist_id
+    const artist = this.state.favorite_artists.find(artist => artist.id === artistId)
+    console.log('artists albums:', artist.favorite_albums)
+    const favorite_albums = artist.favorite_albums
+
+    const albumIndex = favorite_albums.indexOf(album)
+    const newArtistsArray = [...this.state.favorite_artists]
+    const newAlbumsArray = [...favorite_albums]
+    console.log('albumIndex:', albumIndex);
+    console.log('newAlbumsArray:', newAlbumsArray);
+      newAlbumsArray.splice(albumIndex, 1);
+      // newAlbumsArray.splice(albumIndex, 1);
+        this.setState({ favorite_artists: newArtistsArray })
+      console.log(`Deleted album index: ${albumIndex}, new Favorites_Artists array:`,  newAlbumsArray);
+    // this.props.deleteArtistFromFavorites(album)
   }
 
   componentDidMount(){
@@ -42,9 +62,9 @@ class Favorites extends Component {
     // <AlbumList favorites={this.state.favorites} deleteArtist={this.deleteArtist}/>
     return (
       <div id='favorites-container'>
-        <FavoriteArtistsList favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
-        <FavoriteArtistCard favorite_artists={this.state.favorite_artists} />
-        <FavoriteArtistAlbums favorite_artists={this.state.favorite_artists} />
+        <FavoriteArtistsList favorite_artists={this.state.favorite_artists} />
+        <FavoriteArtistCard favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
+        <FavoriteArtistAlbums favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} deleteAlbum={this.deleteAlbum} />
         <FavoriteArtistBio favorite_artists={this.state.favorite_artists} />
       </div>
     );

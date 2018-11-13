@@ -139,6 +139,18 @@ export function deleteArtistFromFavorites(artist) {
   }
 }
 
+export function deleteAlbumFromFavorites(album) {
+  return (dispatch) => {
+    return fetch(`${URL}/favorite_albums/${album.id}`, {
+      method: "DELETE",
+    })
+    .then(res => res.json())
+    .then(json => {
+      dispatch({type: "GET_FAVORITE_ARTISTS", payload: json.favorites})
+    })
+  }
+}
+
 export function getFavorites(){
   return (dispatch) => {
     return fetch(URL + "/favorite_artists")
