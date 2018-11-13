@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import '../styles/Favorites.css'
 // import AlbumList from './AlbumList.js'
 import FavoriteArtistsList from './favorites/FavoriteArtistsList.js'
-import FavoriteArtistsCard from './favorites/FavoriteArtistsCard.js'
+import FavoriteArtistCard from './favorites/FavoriteArtistCard.js'
+import FavoriteArtistAlbums from './favorites/FavoriteArtistAlbums.js'
+import FavoriteArtistBio from './favorites/FavoriteArtistBio.js'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -41,7 +43,9 @@ class Favorites extends Component {
     return (
       <div id='favorites-container'>
         <FavoriteArtistsList favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
-        <FavoriteArtistsCard favorite_artists={this.state.favorite_artists} />
+        <FavoriteArtistCard favorite_artists={this.state.favorite_artists} />
+        <FavoriteArtistAlbums favorite_artists={this.state.favorite_artists} />
+        <FavoriteArtistBio favorite_artists={this.state.favorite_artists} />
       </div>
     );
   }

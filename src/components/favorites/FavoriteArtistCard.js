@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import AlbumDetail from '../AlbumDetail.js'
-// import '../styles/favorites/FavoriteArtistsCard.css'
+// import '../styles/favorites/FavoriteArtistCard.css'
 
-class FavoriteArtistsCard extends Component {
+class FavoriteArtistCard extends Component {
 
   renderAlbumDetail = () => {
     const firstArtist = this.props.favorite_artists[0]
@@ -11,11 +11,11 @@ class FavoriteArtistsCard extends Component {
 
   render() {
     return (
-      <div id='favoriteartistscard-container'>
+      <div id='favoriteartistcard-container'>
         {this.props.favorite_artists ? this.renderAlbumDetail() : <p>No Favorite Album to Display!</p>}
       </div>
     );
   }
 }
 
-export default FavoriteArtistsCard;
+export default FavoriteArtistCard;
