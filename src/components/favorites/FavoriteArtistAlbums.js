@@ -19,7 +19,7 @@ class FavoriteArtistAlbums extends Component {
   }
 
   render() {
-    // console.log('FavoriteArtistAlbums props:', this.props.favorite_artists);
+    console.log('FavoriteArtistAlbums favorite_artists props:', this.props.favorite_artists);
     return (
       <div id='favoriteartistbio-container'>
         Favorite Albums:

@@ -146,7 +146,7 @@ export function deleteAlbumFromFavorites(album) {
     })
     .then(res => res.json())
     .then(json => {
-      dispatch({type: "GET_FAVORITE_ARTISTS", payload: json.favorites})
+      dispatch({type: "GET_FAVORITE_ARTISTS", payload: json.favorite_artists})
     })
   }
 }

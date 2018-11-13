@@ -34,17 +34,18 @@ class Favorites extends Component {
   }
 
   deleteAlbum = (album) => {
-    console.log(album);
+    // console.log(album);
     const artistId = album.favorite_artist_id
     const artist = this.state.favorite_artists.find(artist => artist.id === artistId)
-    console.log('artists albums:', artist.favorite_albums)
+    // console.log('artists albums:', artist.favorite_albums)
     const favorite_albums = artist.favorite_albums
 
     const albumIndex = favorite_albums.indexOf(album)
     const newArtistsArray = [...this.state.favorite_artists]
     const newAlbumsArray = [...favorite_albums]
-    console.log('albumIndex:', albumIndex);
-    console.log('newAlbumsArray:', newAlbumsArray);
+    // console.log('albumIndex:', albumIndex);
+    // console.log('newAlbumsArray:', newAlbumsArray);
+    console.log('newArtistsArray:', newArtistsArray);
       newAlbumsArray.splice(albumIndex, 1);
       // newAlbumsArray.splice(albumIndex, 1);
         this.setState({ favorite_artists: newArtistsArray })
@@ -57,7 +58,7 @@ class Favorites extends Component {
   }
 
   render() {
-    // console.log('in Favorites props', this.props);
+    console.log('in Favorites props', this.props);
     // console.log('in Favorites state', this.state);
     // <AlbumList favorites={this.state.favorites} deleteArtist={this.deleteArtist}/>
     return (
