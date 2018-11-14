@@ -4,19 +4,25 @@ import React, { Component } from 'react';
 class FavoriteArtistBio extends Component {
 
   renderArtistBio = () => {
-    const firstArtist = this.props.favorite_artists[0]
-    const secondArtist = this.props.favorite_artists[1]
-    if(firstArtist.bio){
-      return <p> Bio: {firstArtist.bio.slice(0, 500)} </p>
-    } else if(secondArtist.bio){
-      return <p> Bio: {secondArtist.bio.slice(0, 500)} </p>
+    if(this.props.favorite_artists){
+      for(let artist of this.props.favorite_artists){
+          return <p> Bio: {artist.bio.slice(0, 500)} </p>
+      }
     }
+
+    // if(favorite_artists && favorite_artists[0].bio){
+    //   const firstArtist = favorite_artists[0]
+    //   return <p> Bio: {firstArtist.bio.slice(0, 500)} </p>
+    // } else if(favorite_artists[1].bio){
+    //   return <p> Bio: {favorite_artists[1].bio.slice(0, 500)} </p>
+    // }
   }
 
   render() {
+    // console.log(this.props.favorite_artists);
     return (
       <div id='favoriteartistbio-container'>
-        {this.props.favorite_artists ? this.renderArtistBio() : <p> No Bio to Show! </p>}
+        {this.props.favorite_artists !== (undefined || []) ? this.renderArtistBio() : <p> No Bio to Show! </p>}
       </div>
     );
   }

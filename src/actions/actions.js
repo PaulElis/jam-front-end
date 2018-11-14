@@ -143,12 +143,11 @@ export function deleteAlbumFromFavorites(album) {
       method: "DELETE",
     })
     .then(res => res.json())
-    .then(json => {
-      console.log('in deleteAlbumFromFavorites', json.favorite_artists);
+    .then(favorites => {
+      // console.log('in deleteAlbumFromFavorites', favorites.favorite_artists);
       dispatch({
-        type: "GET_FAVORITE_ARTISTS", payload: json.favorite_artists,
-        type: "GET_FAVORITE_ALBUMS", payload: json.favorite_albums
-      })
+        type: "GET_FAVORITE_ARTISTS", payload: favorites.favorite_artists,
+        type: "GET_FAVORITE_ALBUMS", payload: favorites.favorite_albums })
     })
   }
 }
@@ -158,7 +157,11 @@ export function getFavorites(){
     return fetch(URL + "/favorite_artists")
     .then(res => res.json())
     .then(favorites => {
-      console.log('in getFavorites', favorites);
-      dispatch({type: "GET_FAVORITE_ARTISTS", payload: favorites}) })
+      // console.log('in getFavorites', favorites);
+      dispatch({
+        type: "GET_FAVORITE_ARTISTS", payload: favorites,
+        // type: "GET_FAVORITE_ALBUMS", payload: favorites.favorite_albums 
+      })
+    })
   }
 }

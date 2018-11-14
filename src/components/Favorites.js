@@ -62,7 +62,7 @@ class Favorites extends Component {
   }
 
   render() {
-    console.log('in Favorites props', this.props);
+    // console.log('in Favorites props', this.props);
     // console.log('in Favorites state', this.state);
     // <AlbumList favorites={this.state.favorites} deleteArtist={this.deleteArtist}/>
     return (
