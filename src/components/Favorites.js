@@ -13,7 +13,7 @@ import { getFavorites, deleteArtistFromFavorites, deleteAlbumFromFavorites } fro
 class Favorites extends Component {
 
   state = {
-    // favorites: [],
+    // favorite_artists: [],
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
@@ -25,12 +25,13 @@ class Favorites extends Component {
   }
 
   deleteArtist = (artist) => {
-    console.log('in deleteArtist', artist);
+    // console.log('in deleteArtist', artist);
     const artistIndex = this.state.favorite_artists.indexOf(artist)
-    const newArray = [...this.state.favorite_artists]
-      newArray.splice(artistIndex, 1);
-        this.setState({ favorite_artists: newArray })
-      // console.log(`Deleted artist index: ${artistIndex}, new Favorites_Artists array:`,  newArray);
+    const newArtistsArray = [...this.state.favorite_artists]
+    newArtistsArray.splice(artistIndex, 1);
+      this.setState({ favorite_artists: newArtistsArray })
+      // console.log(`Deleted artist index: ${artistIndex}, new Favorites_Artists array:`,  newArtistsArray);
+      console.log('Favorites state:', this.state);
     this.props.deleteArtistFromFavorites(artist)
   }
 
@@ -45,15 +46,15 @@ class Favorites extends Component {
     const newArtistsArray = [...this.state.favorite_artists]
     const newAlbumsArray = [...favorite_albums]
     // console.log('albumIndex:', albumIndex);
-    console.log('newAlbumsArray:', newAlbumsArray);
-    console.log('newArtistsArray:', newArtistsArray);
+    // console.log('newAlbumsArray:', newAlbumsArray);
+    // console.log('newArtistsArray:', newArtistsArray);
       newAlbumsArray.splice(albumIndex, 1);
       // newAlbumsArray.splice(albumIndex, 1);
         this.setState({
           favorite_artists: newArtistsArray,
           favorite_albums: newAlbumsArray,
          })
-      console.log(`Deleted album index: ${albumIndex}, newAlbumsArray:`,  newAlbumsArray);
+      // console.log(`Deleted album index: ${albumIndex}, newAlbumsArray:`,  newAlbumsArray);
     this.props.deleteAlbumFromFavorites(album)
   }
 
@@ -67,8 +68,10 @@ class Favorites extends Component {
     // <AlbumList favorites={this.state.favorites} deleteArtist={this.deleteArtist}/>
     return (
       <div id='favorites-container'>
+      <div id='favorites-toplevel'>
         <FavoriteArtistsList favorite_artists={this.state.favorite_artists} />
         <FavoriteArtistCard favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
+      </div>
         <FavoriteArtistAlbums favorite_artists={this.state.favorite_artists} favorite_albums={this.state.favorite_albums} deleteArtist={this.deleteArtist} deleteAlbum={this.deleteAlbum} />
         <FavoriteArtistBio favorite_artists={this.state.favorite_artists} />
       </div>

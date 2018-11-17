@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AlbumDetail from '../AlbumDetail.js'
-// import '../styles/favorites/FavoriteArtistCard.css'
+import '../../styles/favorites/FavoriteArtistCard.css'
 
 class FavoriteArtistCard extends Component {
 
