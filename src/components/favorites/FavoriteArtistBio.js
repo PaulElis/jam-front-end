@@ -9,20 +9,14 @@ class FavoriteArtistBio extends Component {
           return <p> Bio: {artist.bio.slice(0, 500)} </p>
       }
     }
-
-    // if(favorite_artists && favorite_artists[0].bio){
-    //   const firstArtist = favorite_artists[0]
-    //   return <p> Bio: {firstArtist.bio.slice(0, 500)} </p>
-    // } else if(favorite_artists[1].bio){
-    //   return <p> Bio: {favorite_artists[1].bio.slice(0, 500)} </p>
-    // }
   }
 
   render() {
     // console.log(this.props.favorite_artists);
     return (
       <div id='favoriteartistbio-container'>
-        {this.props.favorite_artists !== (undefined || []) ? this.renderArtistBio() : <p> No Bio to Show! </p>}
+        {this.props.favorite_artists !== (undefined || []) ? this.renderArtistBio()
+          : <p> No Bio to Show! </p>}
       </div>
     );
   }
