@@ -26,12 +26,6 @@ class AlbumList extends Component {
 
   }
 
-  renderFavorites = () => {
-    // console.log('in renderFavorites');
-    return this.props.favorites.map(favorite =>
-      <AlbumDetail key={favorite.url} artist={favorite} deleteArtist={this.props.deleteArtist} favorite={favorite} image={favorite.image}/>)
-  }
-
   renderTopArtists = () => {
     // console.log('in renderTopArtists', this.state.top_artists);
     return this.state.top_artists.map(artist =>
@@ -49,8 +43,7 @@ class AlbumList extends Component {
     // console.log('AlbumList props', this.props)
     return (
       <div id='albumlist-container'>
-        {this.props.favorites ?
-          this.renderFavorites() : this.state.top_artists ?
+        {this.state.top_artists ?
           this.renderTopArtists() : this.renderAlbums()}
       </div>
     );

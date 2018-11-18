@@ -13,7 +13,7 @@ import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, f
 class AlbumDetail extends Component {
 
   state: {
-    favorite_artistss: [],
+    favorite_artists: [],
   }
 
   numberFormat = (num) => {

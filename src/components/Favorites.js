@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../styles/Favorites.css'
-// import AlbumList from './AlbumList.js'
 import FavoriteArtistsList from './favorites/FavoriteArtistsList.js'
 import FavoriteArtistCard from './favorites/FavoriteArtistCard.js'
 import FavoriteArtistAlbums from './favorites/FavoriteArtistAlbums.js'
@@ -50,10 +49,10 @@ class Favorites extends Component {
     // console.log('newArtistsArray:', newArtistsArray);
       newAlbumsArray.splice(albumIndex, 1);
       // newAlbumsArray.splice(albumIndex, 1);
-        this.setState({
-          favorite_artists: newArtistsArray,
-          favorite_albums: newAlbumsArray,
-         })
+      this.setState({
+        favorite_artists: newArtistsArray,
+        favorite_albums: newAlbumsArray,
+       })
       // console.log(`Deleted album index: ${albumIndex}, newAlbumsArray:`,  newAlbumsArray);
     this.props.deleteAlbumFromFavorites(album)
   }

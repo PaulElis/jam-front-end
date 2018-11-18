@@ -131,12 +131,9 @@ export function deleteArtistFromFavorites(artist) {
       method: "DELETE",
     })
     .then(res => res.json())
-    .then(json => {
-      console.log('in deleteArtistFromFavorites', json);
-      dispatch({
-        type: "GET_FAVORITE_ARTISTS", payload: json.favorite_artists,
-        // type: "GET_FAVORITE_ALBUMS", payload: json.favorite_albums
-    })
+    .then(favorite_artists => {
+      console.log('in deleteArtistFromFavorites', favorite_artists);
+      dispatch({ type: "GET_FAVORITE_ARTISTS", payload: favorite_artists })
     })
   }
 }
