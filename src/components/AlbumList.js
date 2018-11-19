@@ -8,28 +8,20 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 class AlbumList extends Component {
-  state = {
-    // albums: [],
-    // favorites: [],
-    // top_artists: [],
-  }
+
+  state = {}
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     return {
       albums: nextProps.albums === [] ? [] : nextProps.albums,
-      // favorites: nextProps.favorites === [] ? [] : nextProps.favorites,
       top_artists: nextProps.top_artists === [] ? [] : nextProps.top_artists,
     }
-  }
-
-  componentDidMount = () => {
-
   }
 
   renderTopArtists = () => {
     // console.log('in renderTopArtists', this.state.top_artists);
     return this.state.top_artists.map(artist =>
-      <AlbumDetail key={artist.url} artist={artist} image={artist.image[3]['#text']}/>
+      <AlbumDetail key={artist.url} artist={artist} top_artists={this.state.top_artists} image={artist.image[3]['#text']}/>
     )
   }
 

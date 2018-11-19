@@ -12,9 +12,7 @@ import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, f
 
 class AlbumDetail extends Component {
 
-  state: {
-    favorite_artists: [],
-  }
+  state = {}
 
   numberFormat = (num) => {
           // Nine Zeroes for Billions
@@ -49,7 +47,8 @@ class AlbumDetail extends Component {
   }
 
   render() {
-    // console.log('AlbumDetail props', this.props);
+    // console.log('AlbumDetail props:', this.props);
+    // console.log('AlbumDetail location:', this.props.location.pathname);
     return (
       <div id='albumdetail-container'>
         <Card>
@@ -82,15 +81,16 @@ class AlbumDetail extends Component {
               <div
                 id='clickable'
                 onClick={this.albumClick} >
-                    {this.props.favorite_artists ? <p>Remove from Favorites</p>
-                    : <p>Add to Favorites</p>}
+                  {this.props.location.pathname === '/home' ? <p>Add to Favorites</p>
+                  : <p>Remove from Favorites</p>}
               </div>
             </div>
           </CardSection>
 
           <CardSection>
             <Button
-              id='view-button'
+              top_artists={this.props.top_artists}
+              artist={this.props.artist}
               link={this.props.artist ? this.props.artist.url : this.props.album.url} >
               {this.props.artist ? 'View Artist' : 'View Album'}
             </Button>

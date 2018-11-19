@@ -19,6 +19,8 @@ class Favorites extends Component {
     }
   }
 
+  componentDidMount = () => { this.props.getFavorites() }
+
   deleteArtist = (artist) => {
     const artistIndex = this.state.favorite_artists.indexOf(artist)
     const newArtistsArray = [...this.state.favorite_artists]
@@ -40,10 +42,6 @@ class Favorites extends Component {
     this.props.deleteAlbumFromFavorites(album)
   }
 
-  componentDidMount(){
-    this.props.getFavorites()
-  }
-
   render() {
     // console.log('in Favorites props', this.props);
     // console.log('in Favorites state', this.state);
@@ -53,7 +51,7 @@ class Favorites extends Component {
         <FavoriteArtistsList favorite_artists={this.state.favorite_artists} />
         <FavoriteArtistCard favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
       </div>
-        <FavoriteArtistAlbums favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} deleteAlbum={this.deleteAlbum} />
+        <FavoriteArtistAlbums favorite_artists={this.state.favorite_artists} deleteAlbum={this.deleteAlbum} />
         <FavoriteArtistBio favorite_artists={this.state.favorite_artists} />
       </div>
     );
