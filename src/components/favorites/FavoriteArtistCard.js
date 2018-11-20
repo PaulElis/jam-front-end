@@ -16,7 +16,8 @@ class FavoriteArtistCard extends Component {
     // console.log(this.props.favorite_artists);
     return (
       <div id='favoriteartistcard-container'>
-        {this.props.favorite_artists !== (undefined || []) ? this.renderAlbumDetail() : <p>No Favorite Album to Display!</p>}
+        {this.props.favorite_artists !== (undefined || []) ? this.renderAlbumDetail() :
+         <p>No Favorite Album to Display!</p>}
       </div>
     );
   }

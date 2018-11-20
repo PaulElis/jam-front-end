@@ -2,8 +2,27 @@ div#favoriteartistcard-container{
   width: 70%;
 }
 
-a#favorite-artist-button{
-  background-color: red;
+#favoriteartist-card-header-link a{
+  font-size: 3vw;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.favoriteartist-card-header{
+  font-size: 3vw;
+}
+
+a#favoriteartist-button{
+  color: #000;
+  font-size: 4vw;
+  font-weight: bold;
+  letter-spacing: 2px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   width: 50%;
   padding: 0% 27%;
+  text-decoration: none;
+  margin-bottom: 5%;
 }

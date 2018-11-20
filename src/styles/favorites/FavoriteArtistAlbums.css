@@ -1,8 +1,38 @@
-/* div#albumdetail-container{
+div#favoriteartistalbums-container{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-} */
+  grid-template-columns: 1fr 1fr;
+}
 
-a#favorite-album-button{
-  background-color: blue;
+div#favoritealbum-card-header-container{
+  /* padding: 0% 0%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#favoritealbum-card-header-link a{
+  font-size: 2vw;
+  color: black;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.favoritealbum-card-header{
+  font-size: 2vw;
+}
+
+a#favoritealbum-button{
+  color: #000;
+  font-size: 4vw;
+  font-weight: bold;
+  letter-spacing: 2px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 50%;
+  padding: 0% 15%;
+  text-decoration: none;
+  margin-bottom: 5%;
 }

@@ -46,6 +46,12 @@ class AlbumDetail extends Component {
       : this.addAlbumToFavorites(this.props.album)
   }
 
+  renderCSSTag = () => {
+    return this.props.top_artists === undefined && this.props.artist ?
+      'favoriteartist-' : this.props.top_artists === undefined ?
+      'favoritealbum-' : ''
+  }
+
   render() {
     // console.log('AlbumDetail props:', this.props);
     // console.log('AlbumDetail location:', this.props.location.pathname);
@@ -54,17 +60,18 @@ class AlbumDetail extends Component {
         <Card>
           <div id='card-header-upper-container'>
             <CardSection>
-              <div id='card-header-container'>
-              {/* Is there an Artist or an Album */}
-                <span className='card-header' id='card-header-link'>
-                  {this.props.artist ?
+              <div id={`${this.renderCSSTag()}card-header-container`}>
+                <span className='card-header' id={`${this.renderCSSTag()}card-header-link`}>
+                {/* Is there an Artist or an Album */}
+                {this.props.artist ?
                   <a href={this.props.artist.url} target="_blank" rel="noopener noreferrer">{this.props.artist.name}</a> :
                     this.props.album.name !== '(null)' ?
                   <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.props.album.name}</a> :
                     <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.props.album.artist.name}'s Untitled Album</a>}
                 </span>
 
-                <span className='card-header'> {this.props.artist ? this.numberFormat(this.props.artist.listeners) :
+                <span className={`${this.renderCSSTag()}card-header`}>
+                  {this.props.artist ? this.numberFormat(this.props.artist.listeners) :
                   this.numberFormat(this.props.album.playcount)} Plays </span>
               </div>
             </CardSection>
