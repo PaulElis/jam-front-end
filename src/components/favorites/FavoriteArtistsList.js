@@ -5,7 +5,15 @@ class FavoriteArtistsList extends Component {
 
   renderFavoriteArtists = () => {
     return this.props.favorite_artists.map(artist =>
-      <p key={artist.name}>{artist.name}</p>)
+      <p key={artist.name} id='artistlist-name'>{this.renderArtistName(artist.name)}</p>)
+  }
+
+  renderArtistName = (name) => {
+    if(name.length > 21){
+      return `${name.slice(0, 21)}...`
+    } else {
+      return name
+    }
   }
 
   render() {

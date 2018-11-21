@@ -1,10 +1,22 @@
+div#favoritealbum-albumdetail-container{
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin: 2%;
+}
+
 div#favoriteartistalbums-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin: 1% 0%;
+}
+
+div#favoritealbum-card-header-upper-container{
+  background-color: #FAD397;
 }
 
 div#favoritealbum-card-header-container{
-  /* padding: 0% 0%; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,14 +37,49 @@ div#favoritealbum-card-header-container{
 
 a#favoritealbum-button{
   color: #000;
-  font-size: 4vw;
+  font-size: 2vw;
   font-weight: bold;
   letter-spacing: 2px;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
   width: 50%;
-  padding: 0% 15%;
+  padding: 0% 29%;
   text-decoration: none;
   margin-bottom: 5%;
+}
+
+@media only screen and (min-width: 576px) {
+a#favoritealbum-button{
+  padding: 0% 31%;
+}
+}
+
+@media only screen and (min-width: 768px) {
+div#favoriteartistalbums-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#favoritealbum-card-header-link a{
+  font-size: 1vw;
+}
+
+.favoritealbum-card-header{
+  font-size: 1vw;
+}
+
+a#favoritealbum-button{
+  font-size: 1vw;
+  padding: 0% 24%;
+}
+
+}
+
+@media only screen and (min-width: 768px) {
+div#favoriteartistalbums-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 }

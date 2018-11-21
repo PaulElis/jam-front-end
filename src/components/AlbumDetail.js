@@ -52,21 +52,37 @@ class AlbumDetail extends Component {
       'favoritealbum-' : ''
   }
 
+  renderAlbumName = () => {
+    if(this.props.album.name.length > 21){
+      return `${this.props.album.name.slice(0, 21)}...`
+    } else {
+      return this.props.album.name
+    }
+  }
+
+  renderArtistName = () => {
+    if(this.props.artist.name.length > 21){
+      return `${this.props.artist.name.slice(0, 21)}...`
+    } else {
+      return this.props.artist.name
+    }
+  }
+
   render() {
     // console.log('AlbumDetail props:', this.props);
     // console.log('AlbumDetail location:', this.props.location.pathname);
     return (
-      <div id='albumdetail-container'>
+      <div id={`${this.renderCSSTag()}albumdetail-container`}>
         <Card>
-          <div id='card-header-upper-container'>
+          <div id={`${this.renderCSSTag()}card-header-upper-container`}>
             <CardSection>
               <div id={`${this.renderCSSTag()}card-header-container`}>
                 <span className='card-header' id={`${this.renderCSSTag()}card-header-link`}>
                 {/* Is there an Artist or an Album */}
                 {this.props.artist ?
-                  <a href={this.props.artist.url} target="_blank" rel="noopener noreferrer">{this.props.artist.name}</a> :
+                  <a href={this.props.artist.url} target="_blank" rel="noopener noreferrer">{this.renderArtistName()}</a> :
                     this.props.album.name !== '(null)' ?
-                  <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.props.album.name}</a> :
+                  <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.renderAlbumName()}</a> :
                     <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.props.album.artist.name}'s Untitled Album</a>}
                 </span>
 

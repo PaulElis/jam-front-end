@@ -3,15 +3,17 @@ import '../styles/Button.css'
 
 class Button extends Component {
 
-  state = {}
+  renderCSSTag = () => {
+    return this.props.top_artists === undefined && this.props.artist ?
+      'favoriteartist-' : this.props.top_artists === undefined ?
+      'favoritealbum-' : ''
+  }
 
   render() {
     // console.log('props', this.props);
     return (
       <a href={this.props.link} target="_blank"
-        rel="noopener noreferrer" id={this.props.top_artists === undefined && this.props.artist ?
-          'favoriteartist-button' : this.props.top_artists === undefined ?
-          'favoritealbum-button' : 'button'}>
+        rel="noopener noreferrer" id={`${this.renderCSSTag()}button`}>
         {this.props.children} </a>
     );
   }

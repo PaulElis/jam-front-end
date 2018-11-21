@@ -91,9 +91,6 @@ div#clickable{
 }
 
 @media only screen and (min-width: 768px) {
-div#albumdetail-container{
-  margin: 3%;
-}
 
 div#card-header-container{
   height: 2em;
