@@ -6,7 +6,7 @@ class FavoriteArtistBio extends Component {
   renderArtistBio = () => {
     if(this.props.favorite_artists){
       for(let artist of this.props.favorite_artists){
-          return <p> Bio: {artist.bio.slice(0, 500)} </p>
+          return <p> {artist.bio.slice(0, 1000)} </p>
       }
     }
   }

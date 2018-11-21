@@ -12,8 +12,6 @@ import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, f
 
 class AlbumDetail extends Component {
 
-  state = {}
-
   numberFormat = (num) => {
           // Nine Zeroes for Billions
   return Math.abs(Number(num)) >= 1.0e+9
@@ -39,11 +37,20 @@ class AlbumDetail extends Component {
     .then(() => this.props.addArtistToFavorites(this.props.full_artist_info))
   }
 
-  albumClick = () => {
-    this.props.album && this.props.favorite_artists !== undefined ? this.props.deleteAlbum(this.props.album)
-      : this.props.favorite_artists ? this.props.deleteArtist(this.props.artist)
-      : this.props.artist ? this.addArtistToFavorites(this.props.artist)
-      : this.addAlbumToFavorites(this.props.album)
+  albumClick = (e) => {
+    if(e.target.id === 'favoriteartist-clickable'){
+      this.props.deleteArtist(this.props.artist)
+    } else if(this.props.location.pathname === '/albums'){
+      this.addAlbumToFavorites(this.props.album)
+    } else if(this.props.location.pathname === '/favorites' && e.target.id === 'favoritealbum-clickable'){
+      this.props.deleteAlbum(this.props.album)
+    } else{
+    this.props.location.pathname === '/home' ? this.addArtistToFavorites(this.props.artist)
+    : this.props.location.pathname === '/albums' ? this.addAlbumToFavorites(this.props.album)
+    : e.target.id === "favoriteartist-album-image" ? this.props.deleteArtist(this.props.artist)
+    : e.target.id === "favoritealbum-album-image" ? this.props.deleteAlbum(this.props.album)
+    : console.log('AlbumClick Error!');
+    }
   }
 
   renderCSSTag = () => {
@@ -53,8 +60,8 @@ class AlbumDetail extends Component {
   }
 
   renderAlbumName = () => {
-    if(this.props.album.name.length > 21){
-      return `${this.props.album.name.slice(0, 21)}...`
+    if(this.props.album.name.length > 18){
+      return `${this.props.album.name.slice(0, 18)}...`
     } else {
       return this.props.album.name
     }
@@ -70,7 +77,6 @@ class AlbumDetail extends Component {
 
   render() {
     // console.log('AlbumDetail props:', this.props);
-    // console.log('AlbumDetail location:', this.props.location.pathname);
     return (
       <div id={`${this.renderCSSTag()}albumdetail-container`}>
         <Card>
@@ -96,16 +102,18 @@ class AlbumDetail extends Component {
           <CardSection>
             <div id='image-container'>
               <img
-                id='album-image'
+                id={`${this.renderCSSTag()}album-image`}
+                // id='album-image'
                 src={this.props.image ? this.props.image : record}
                 alt='oh no!'
                 onClick={this.albumClick}
                 onError={(e) => { e.target.src = record /*replacement image*/ }} />
               <div
-                id='clickable'
+                id={`${this.renderCSSTag()}clickable`}
                 onClick={this.albumClick} >
-                  {this.props.location.pathname === '/home' ? <p>Add to Favorites</p>
-                  : <p>Remove from Favorites</p>}
+                  {this.props.location.pathname === '/home' || this.props.location.pathname === '/albums' ?
+                  <p id={`${this.renderCSSTag()}clickable`}>Add to Favorites</p>
+                  : <p id={`${this.renderCSSTag()}clickable`}>Remove from Favorites</p>}
               </div>
             </div>
           </CardSection>

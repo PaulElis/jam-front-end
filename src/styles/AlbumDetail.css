@@ -65,11 +65,6 @@ div#clickable{
   cursor: pointer;
 }
 
-/* Not working */
-div#clickable:hover img#album-image{
-  opacity: .3;
-}
-
 @media only screen and (min-width: 576px) {
 div#albumdetail-container{
   margin: 3%;
