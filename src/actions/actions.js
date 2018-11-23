@@ -5,7 +5,7 @@ const URL = 'https://jam-back-end.herokuapp.com/api/v1'
 const headers = { "Content-Type": "application/json"}
 
 export function runSearch(query){
-  const URL = 'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=' + query + API_KEY
+  const URL = 'https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=' + query + API_KEY
   return (dispatch) => {
     return fetch(URL)
       .then(res => res.json())
@@ -17,7 +17,7 @@ export function runSearch(query){
 }
 
 export function fetchTopArtists(){
-  const URL = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists' + API_KEY
+  const URL = 'https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists' + API_KEY
   return (dispatch) => {
     return fetch(URL)
       .then(res => res.json())
@@ -30,7 +30,7 @@ export function fetchTopArtists(){
 }
 
 export function fetchFullArtistInfo(artistName){
-  const URL = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + artistName + API_KEY
+  const URL = 'https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + artistName + API_KEY
   return (dispatch) => {
     return fetch(URL)
       .then(res => res.json())

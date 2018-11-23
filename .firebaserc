@@ -1,1 +1,5 @@
-{}
+{
+  "projects": {
+    "staging": "jam-app-24722"
+  }
+}
