@@ -17,6 +17,7 @@ class FavoriteArtistsList extends Component {
   }
 
   render() {
+    console.log(this.props.favorite_artists);
     return (
       <div id='favoriteartistslist-container'>
         {this.props.favorite_artists ? this.renderFavoriteArtists()
