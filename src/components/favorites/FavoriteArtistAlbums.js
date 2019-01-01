@@ -15,10 +15,15 @@ class FavoriteArtistAlbums extends Component {
     }
   }
 
+  renderCSSTag = () => {
+    return this.props.favorite_artists !== (undefined || []) ?
+      'no-' : null
+  }
+
   render() {
     // console.log('FavoriteArtistAlbums props:', this.props);
     return (
-      <div id='favoriteartistalbums-container'>
+      <div id={`${this.renderCSSTag()}favoriteartistalbums-container`}>
         {this.props.favorite_artists ? this.renderArtistAlbums() : null }
       </div>
     );

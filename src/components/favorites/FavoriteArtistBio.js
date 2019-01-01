@@ -15,10 +15,15 @@ class FavoriteArtistBio extends Component {
     }
   }
 
+  renderCSSTag = () => {
+    return this.props.favorite_artists !== (undefined || []) ?
+      'no-' : null
+  }
+
   render() {
     // console.log(this.props.favorite_artists);
     return (
-      <div id='favoriteartistbio-container'>
+      <div id={`${this.renderCSSTag()}favoriteartistbio-container`}>
         {this.props.favorite_artists !== (undefined || []) ? this.renderArtistBio()
           : <p> No Bio to Show! </p>}
       </div>

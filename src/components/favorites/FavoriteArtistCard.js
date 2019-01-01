@@ -4,6 +4,8 @@ import '../../styles/favorites/FavoriteArtistCard.css'
 
 class FavoriteArtistCard extends Component {
 
+  state = { favorite_artists: this.props.favorite_artists }
+
   renderAlbumDetail = () => {
     const favorite_artists = this.props.favorite_artists
     if(favorite_artists && favorite_artists[0]){
@@ -12,11 +14,20 @@ class FavoriteArtistCard extends Component {
     }
   }
 
+  renderCSSTag = () => {
+    const favorite_artists = this.props.favorite_artists
+    if(favorite_artists && favorite_artists.length === 0){
+      return 'no-'
+    } else {
+      return ''
+    }
+  }
+
   render() {
-    // console.log(this.props.favorite_artists);
+    console.log(this.props.favorite_artists);
     return (
-      <div id='favoriteartistcard-container'>
-        {this.props.favorite_artists !== (undefined || []) ? this.renderAlbumDetail() :
+      <div id={`${this.renderCSSTag()}favoriteartistcard-container`}>
+        {this.state.favorite_artists !== (undefined || []) ? this.renderAlbumDetail() :
          <p>No Favorite Album to Display!</p>}
       </div>
     );

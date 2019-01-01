@@ -8,6 +8,12 @@ class FavoriteArtistsList extends Component {
       <p key={artist.name} id='artistlist-name'>{this.renderArtistName(artist.name)}</p>)
   }
 
+  renderHandler = () => {
+    this.props.favorite_artists === undefined || []
+      ? <div>No Artists!</div>
+      : this.renderFavoriteArtists()
+  }
+
   renderArtistName = (name) => {
     if(name.length > 21){
       return `${name.slice(0, 21)}...`
@@ -16,12 +22,19 @@ class FavoriteArtistsList extends Component {
     }
   }
 
+  renderCSSTag = () => {
+    return this.props.favorite_artists !== (undefined || []) ?
+      'no-' : null
+  }
+
   render() {
-    console.log(this.props.favorite_artists);
+    // console.log(this.props.favorite_artists === undefined);
+    // {this.props.favorite_artists === (undefined || [])
+      //   ? <div>No Artists!</div>
+      //   : this.renderFavoriteArtists()}
     return (
-      <div id='favoriteartistslist-container'>
-        {this.props.favorite_artists ? this.renderFavoriteArtists()
-          : <p>No Favorite Artists to Display!</p>}
+      <div id={`${this.renderCSSTag()}favoriteartistslist-container`}>
+        {this.renderHandler()}
       </div>
     );
   }
