@@ -24,7 +24,7 @@ class FavoriteArtistCard extends Component {
   }
 
   render() {
-    console.log(this.props.favorite_artists);
+    console.log('card:', this.props.favorite_artists);
     return (
       <div id={`${this.renderCSSTag()}favoriteartistcard-container`}>
         {this.state.favorite_artists !== (undefined || []) ? this.renderAlbumDetail() :

@@ -4,14 +4,13 @@ import '../../styles/favorites/FavoriteArtistsList.css'
 class FavoriteArtistsList extends Component {
 
   renderFavoriteArtists = () => {
-    return this.props.favorite_artists.map(artist =>
-      <p key={artist.name} id='artistlist-name'>{this.renderArtistName(artist.name)}</p>)
-  }
-
-  renderHandler = () => {
-    this.props.favorite_artists === undefined || []
-      ? <div>No Artists!</div>
-      : this.renderFavoriteArtists()
+    const favorite_artists = this.props.favorite_artists
+    if(favorite_artists && favorite_artists.length > 0){
+      return this.props.favorite_artists.map(artist =>
+        <p key={artist.name} id='artistlist-name'>{this.renderArtistName(artist.name)}</p>)
+    } else {
+      return <div>No Artists!</div>
+    }
   }
 
   renderArtistName = (name) => {
@@ -23,18 +22,19 @@ class FavoriteArtistsList extends Component {
   }
 
   renderCSSTag = () => {
-    return this.props.favorite_artists !== (undefined || []) ?
-      'no-' : null
+    const favorite_artists = this.props.favorite_artists
+    if(favorite_artists && favorite_artists.length === 0){
+      return 'no-'
+    } else {
+      return ''
+    }
   }
 
   render() {
-    // console.log(this.props.favorite_artists === undefined);
-    // {this.props.favorite_artists === (undefined || [])
-      //   ? <div>No Artists!</div>
-      //   : this.renderFavoriteArtists()}
+    console.log('list:', this.props.favorite_artists);
     return (
       <div id={`${this.renderCSSTag()}favoriteartistslist-container`}>
-        {this.renderHandler()}
+        {this.renderFavoriteArtists()}
       </div>
     );
   }
