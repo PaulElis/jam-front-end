@@ -8,9 +8,11 @@ class FavoriteArtistCard extends Component {
 
   renderAlbumDetail = () => {
     const favorite_artists = this.props.favorite_artists
-    if(favorite_artists && favorite_artists[0]){
+    if(favorite_artists && favorite_artists.length > 0){
       const firstArtist = favorite_artists[0]
       return <AlbumDetail artist={firstArtist} favorite={firstArtist} deleteArtist={this.props.deleteArtist} image={firstArtist.image} key={firstArtist.mbid}/>
+    } else {
+      return null
     }
   }
 
@@ -24,11 +26,9 @@ class FavoriteArtistCard extends Component {
   }
 
   render() {
-    console.log('card:', this.props.favorite_artists);
     return (
       <div id={`${this.renderCSSTag()}favoriteartistcard-container`}>
-        {this.state.favorite_artists !== (undefined || []) ? this.renderAlbumDetail() :
-         <p>No Favorite Album to Display!</p>}
+        {this.renderAlbumDetail()}
       </div>
     );
   }

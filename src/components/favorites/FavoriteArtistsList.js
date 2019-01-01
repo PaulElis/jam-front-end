@@ -9,7 +9,7 @@ class FavoriteArtistsList extends Component {
       return this.props.favorite_artists.map(artist =>
         <p key={artist.name} id='artistlist-name'>{this.renderArtistName(artist.name)}</p>)
     } else {
-      return <div>No Artists!</div>
+      return null
     }
   }
 
@@ -31,7 +31,6 @@ class FavoriteArtistsList extends Component {
   }
 
   render() {
-    console.log('list:', this.props.favorite_artists);
     return (
       <div id={`${this.renderCSSTag()}favoriteartistslist-container`}>
         {this.renderFavoriteArtists()}

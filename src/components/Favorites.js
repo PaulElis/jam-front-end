@@ -42,11 +42,20 @@ class Favorites extends Component {
     this.props.deleteAlbumFromFavorites(album)
   }
 
+  renderCSSTag = () => {
+    const favorite_artists = this.props.favorite_artists
+    if(favorite_artists && favorite_artists.length === 0){
+      return 'no-'
+    } else {
+      return ''
+    }
+  }
+
   render() {
     // console.log('in Favorites props', this.props);
     // console.log('in Favorites state', this.state);
     return (
-      <div id='favorites-container'>
+      <div id={`${this.renderCSSTag()}favorites-container`}>
       <div id='favorites-toplevel'>
         <FavoriteArtistsList favorite_artists={this.state.favorite_artists} />
         <FavoriteArtistCard favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
