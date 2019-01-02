@@ -53,21 +53,21 @@ class Favorites extends Component {
 
   render() {
     // console.log('in Favorites props', this.props);
-    console.log('in Favorites state', this.state);
+    // console.log('in Favorites state', this.state);
     return (
       <div>
-      { this.state.favorite_artists && this.state.favorite_artists.length ?
-        <div id={`${this.renderCSSTag()}favorites-container`}>
-          <div id='favorites-toplevel'>
-            <FavoriteArtistsList favorite_artists={this.state.favorite_artists} />
-            <FavoriteArtistCard favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
-          </div>
-            <FavoriteArtistAlbums favorite_artists={this.state.favorite_artists} deleteAlbum={this.deleteAlbum} />
-            <FavoriteArtistBio favorite_artists={this.state.favorite_artists} />
-        </div>
-        : 
+      { this.state.favorite_artists === undefined ?
         <div className='spinner-container'>
           <div className="loader" />
+        </div>
+        :
+        <div id={`${this.renderCSSTag()}favorites-container`}>
+          <div id='favorites-toplevel'>
+          <FavoriteArtistsList favorite_artists={this.state.favorite_artists} />
+          <FavoriteArtistCard favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
+          </div>
+          <FavoriteArtistAlbums favorite_artists={this.state.favorite_artists} deleteAlbum={this.deleteAlbum} />
+          <FavoriteArtistBio favorite_artists={this.state.favorite_artists} />
         </div>
       }
       </div>

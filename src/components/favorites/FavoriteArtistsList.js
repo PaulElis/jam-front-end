@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../styles/favorites/FavoriteArtistsList.css'
+import addArtist from '../../images/addArtist.jpg'
 
 class FavoriteArtistsList extends Component {
 
@@ -9,7 +10,7 @@ class FavoriteArtistsList extends Component {
       return this.props.favorite_artists.map(artist =>
         <p key={artist.name} id='artistlist-name'>{this.renderArtistName(artist.name)}</p>)
     } else {
-      return null
+      return <img id='favorites-background' src={addArtist} alt='oh no!' />
     }
   }
 

@@ -16,6 +16,7 @@ div.loader {
   width: 120px;
   height: 120px;
   animation: spin 1.5s linear infinite;
+  margin-top: 150px;
 }
 
 @keyframes spin {
@@ -23,11 +24,11 @@ div.loader {
     100% { transform: rotate(360deg); }
 }
 
-div#no-favorites-container{
+/* div#no-favorites-container{
   border: 1px solid red;
   border-radius: 5px;
   height: 500px;
-}
+} */
 
 div#favorites-container{
   padding: 5%;
@@ -39,6 +40,15 @@ div#favorites-toplevel{
 }
 
 @media only screen and (min-width: 1200px) {
+div.loader {
+  margin-top: 250px;
+}
+
+img#favorites-background{
+  margin-top: 2%;
+  height: 50rem;
+}
+
 div#favorites-container{
   padding: 2%;
 }
