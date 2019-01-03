@@ -17,7 +17,7 @@ div#favoriteartist-card-header-container{
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  padding: 0% 2%;
+  padding: 1.5% 2%;
 }
 
 #favoriteartist-card-header-link a{
@@ -75,6 +75,10 @@ a#favoriteartist-button{
 }
 
 @media only screen and (min-width: 768px) {
+div#favoriteartist-card-header-container{
+  padding-top: 1%;
+}
+
 #favoriteartist-card-header-link a{
   font-size: 2vw;
 }

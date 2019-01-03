@@ -108,6 +108,10 @@ a#favoritealbum-button{
 }
 
 @media only screen and (min-width: 1200px) {
+div#favoriteartistalbums-container{
+  margin: 1% 5%;
+}
+
 div#favoritealbum-clickable{
   font-size: 1vw;
 }
