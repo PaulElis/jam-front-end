@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../styles/favorites/FavoriteArtistBio.css'
+import './index.css'
 
 class FavoriteArtistBio extends Component {
 

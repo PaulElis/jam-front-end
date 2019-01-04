@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Card from '../Card.js'
-import CardSection from '../CardSection.js'
+import Card from '../Card'
+import CardSection from '../CardSection'
 import Button from '../Button'
 import record from '../../images/record.png'
 import './index.css'

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../../styles/favorites/FavoriteArtistsList.css'
-import addArtist from '../../images/addArtist.jpg'
+import './index.css'
+import addArtist from '../../../images/addArtist.jpg'
 
 class FavoriteArtistsList extends Component {
 

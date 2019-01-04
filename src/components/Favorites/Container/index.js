@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import '../styles/Favorites.css'
-import FavoriteArtistsList from './favorites/FavoriteArtistsList.js'
-import FavoriteArtistCard from './favorites/FavoriteArtistCard.js'
-import FavoriteArtistAlbums from './favorites/FavoriteArtistAlbums.js'
-import FavoriteArtistBio from './favorites/FavoriteArtistBio.js'
+import './index.css'
+import FavoriteArtistsList from '../List'
+import FavoriteArtistCard from '../Card'
+import FavoriteArtistAlbums from '../Albums'
+import FavoriteArtistBio from '../Bio'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { getFavorites, deleteArtistFromFavorites, deleteAlbumFromFavorites } from '../actions/actions'
+import { getFavorites, deleteArtistFromFavorites, deleteAlbumFromFavorites } from '../../../actions/actions'
 
 class Favorites extends Component {
 

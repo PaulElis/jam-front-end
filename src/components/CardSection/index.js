@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import '../styles/Card.css'
+import './index.css'
 
-class Card extends Component {
+class CardSection extends Component {
   render() {
     return (
-      <div id='card-container'>
+      <div id='card-section'>
         {this.props.children}
       </div>
     );
   }
 }
 
-export default Card;
+export default CardSection;

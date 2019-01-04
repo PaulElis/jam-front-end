@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import AlbumDetail from './AlbumDetail'
-import '../styles/AlbumList.css'
+import AlbumDetail from '../AlbumDetail'
+import './index.css'
 
-import { getFavorites, deleteArtistFromFavorites, runSearch } from '../actions/actions'
+import { getFavorites, deleteArtistFromFavorites, runSearch } from '../../actions/actions'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 

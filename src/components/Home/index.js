@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../styles/Home.css'
-import AlbumList from './AlbumList.js'
+import './index.css'
+import AlbumList from '../AlbumList'
 
 class Home extends Component {
 

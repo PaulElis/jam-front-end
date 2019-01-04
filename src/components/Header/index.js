@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Search from './Search'
-import '../styles/Header.css'
-import favorites from '../images/favorites.png'
+import Search from '../Search'
+import './index.css'
+import favorites from '../../images/favorites.png'
 
-import { runSearch, fetchTopArtists } from '../actions/actions'
+import { runSearch, fetchTopArtists } from '../../actions/actions'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom";
 

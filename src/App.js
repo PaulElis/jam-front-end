@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/Header.js'
+import Header from './components/Header'
 // import About from './components/About.js'
-import AlbumList from './components/AlbumList.js'
-import Favorites from './components/Favorites.js'
-import Home from './components/Home.js'
+import AlbumList from './components/AlbumList'
+import Favorites from './components/Favorites/Container'
+import Home from './components/Home'
 
 import { runSearch, fetchTopArtists, fetchFullArtistInfo, addOneArtist, addArtists } from '../src/actions/actions'
 import {Route, withRouter} from 'react-router-dom'
@@ -24,17 +24,7 @@ class App extends Component {
 
   initialRender = () => {
     this.props.fetchTopArtists()
-      // .then(() => console.log('state', this.state))
-    // fetching artists full info
-      // .then(() => this.props.artist_names.map(name =>
-      //   this.props.fetchFullArtistInfo(name)))
       .then(() => this.props.history.push('/home'))
-  }
-
-  secondHalf = () => {
-    // this.state.new_artists.map(artist =>
-    //   this.props.addOneArtist(artist))
-    //     this.props.history.push('/home')
   }
 
   componentDidMount(){
