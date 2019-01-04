@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Search from './Search.js'
-// import Favorites from './Favorites.js'
+import Search from './Search'
 import '../styles/Header.css'
 import favorites from '../images/favorites.png'
 

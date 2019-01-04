@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Card from './Card.js'
-import CardSection from './CardSection.js'
-import Button from './Button.js'
-import record from '../images/record.png'
-import '../styles/AlbumDetail.css'
+import Card from '../Card.js'
+import CardSection from '../CardSection.js'
+import Button from '../Button'
+import record from '../../images/record.png'
+import './index.css'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, fetchFullArtistInfo } from '../actions/actions'
+import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, fetchFullArtistInfo } from '../../actions/actions'
 
 
 class AlbumDetail extends Component {
@@ -125,7 +125,7 @@ class AlbumDetail extends Component {
               { !this.state.loaded ?
                 <div
                   className='animated-background'
-                  // style = {{height: this.getImageHeight()}} 
+                  // style = {{height: this.getImageHeight()}}
                 >
                 </div> : null }
               <img

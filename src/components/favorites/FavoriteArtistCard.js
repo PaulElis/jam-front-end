@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AlbumDetail from '../AlbumDetail.js'
+import AlbumDetail from '../AlbumDetail'
 import '../../styles/favorites/FavoriteArtistCard.css'
 
 class FavoriteArtistCard extends Component {

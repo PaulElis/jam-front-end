@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import '../styles/Search.css'
-import search from '../images/search.png'
+import './index.css'
+import search from '../../images/search.png'
 
-import { runSearch, addAlbums, addArtists, fetchFullArtistInfo, addOneArtist, fetchTopArtists } from '../actions/actions'
+import { runSearch, addAlbums, addArtists, fetchFullArtistInfo, addOneArtist, fetchTopArtists } from '../../actions/actions'
 import { connect } from 'react-redux'
 import { withRouter} from 'react-router-dom'
 

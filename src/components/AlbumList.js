@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import AlbumDetail from './AlbumDetail.js'
+import AlbumDetail from './AlbumDetail'
 import '../styles/AlbumList.css'
-// import MediaQuery from 'react-responsive';
 
 import { getFavorites, deleteArtistFromFavorites, runSearch } from '../actions/actions'
 import { connect } from 'react-redux'
