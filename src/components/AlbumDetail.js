@@ -11,6 +11,14 @@ import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, f
 
 
 class AlbumDetail extends Component {
+  constructor(props) {
+    super(props);
+      this.textInput = React.createRef();
+  }
+
+  state = {
+    loaded: false,
+  }
 
   numberFormat = (num) => {
           // Nine Zeroes for Billions
@@ -51,6 +59,12 @@ class AlbumDetail extends Component {
     : e.target.id === "favoritealbum-album-image" ? this.props.deleteAlbum(this.props.album)
     : console.log('AlbumClick Error!');
     }
+    document.getElementById('favorites-image').style.backgroundColor='red'
+    setTimeout(this.changeButtonBack, 2000);
+  }
+
+  changeButtonBack = () => {
+    document.getElementById('favorites-image').style.backgroundColor='#fff'
   }
 
   renderCSSTag = () => {
@@ -75,8 +89,15 @@ class AlbumDetail extends Component {
     }
   }
 
+  getImageHeight = () => {
+    let height = document.getElementById(`${this.renderCSSTag()}album-image`).style.height
+    console.log(height);
+    // document.getElementsByClassName('animated-background').style.height = height
+    return height
+  }
+
   render() {
-    // console.log('AlbumDetail props:', this.props);
+    // console.log('AlbumDetail state:', this.state);
     return (
       <div id={`${this.renderCSSTag()}albumdetail-container`}>
         <Card>
@@ -101,13 +122,29 @@ class AlbumDetail extends Component {
 
           <CardSection>
             <div id='image-container'>
+              { !this.state.loaded ?
+                <div
+                  className='animated-background'
+                  // style = {{height: this.getImageHeight()}} 
+                >
+                </div> : null }
               <img
                 id={`${this.renderCSSTag()}album-image`}
-                // id='album-image'
                 src={this.props.image ? this.props.image : record}
+                onLoad={() => (this.setState({ loaded: true }))}
                 alt='oh no!'
                 onClick={this.albumClick}
-                onError={(e) => { e.target.src = record /*replacement image*/ }} />
+                onError={(e) => { e.target.src = record /*replacement image*/ }}
+                ref={this.textInput}
+                style={{
+                  animationName: 'gracefulimage',
+                  animationDuration: '0.3s',
+                  animationIterationCount: 1,
+                  animationTimingFunction: 'ease-in',
+                  backgroundColor: 'red',
+                  display: !this.state.loaded ? 'none' : undefined,
+                }}
+              />
               <div
                 id={`${this.renderCSSTag()}clickable`}
                 onClick={this.albumClick} >
