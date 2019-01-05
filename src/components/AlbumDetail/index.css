@@ -59,9 +59,13 @@ div#image-container:hover #clickable{
   100% { background-position: 468px 0 }
 }
 
+span.lazy-load-image-background.blur.lazy-load-image-loaded{
+  width: 100%;
+}
+
 img#album-image{
   width: 100%;
-  border-radius: 5px;
+  border-radius: 0px 0px 5px 5px;
   cursor: pointer;
 }
 

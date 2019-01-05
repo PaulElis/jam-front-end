@@ -6,6 +6,8 @@ import record from '../../images/record.png'
 import './index.css'
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, fetchFullArtistInfo } from '../../actions/actions'
