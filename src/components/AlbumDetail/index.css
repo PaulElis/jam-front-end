@@ -50,9 +50,7 @@ div#image-container:hover #clickable{
   background: #f6f7f8;
   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
   background-size: 800px 104px;
-  height: 339.484px;
-  /* height: 100%; */
-  /* width: 100%; */
+  border-radius: 5px;
   position: relative;
 }
 
@@ -94,19 +92,12 @@ span.card-header{
   font-size: 1.5vw;
 }
 
-img#album-image{
-  width: 100%;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 div#clickable{
   font-size: 2vw;
 }
 }
 
 @media only screen and (min-width: 768px) {
-
 div#card-header-container{
   height: 2em;
   display: flex;
@@ -121,17 +112,6 @@ span.card-header{
 
 #card-header-link a:hover{
   color: #aaa;
-}
-
-img#album-image{
-  width: 100%;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-img#album-image:hover{
-  transition: 1s;
-  opacity: .7;
 }
 }
 
@@ -151,17 +131,6 @@ span.card-header{
 
 #card-header-link a:hover{
   color: #aaa;
-}
-
-img#album-image{
-  width: 100%;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-img#album-image:hover{
-  transition: 1s;
-  opacity: .7;
 }
 
 div#clickable{

@@ -5,16 +5,13 @@ import Button from '../Button'
 import record from '../../images/record.png'
 import './index.css'
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, fetchFullArtistInfo } from '../../actions/actions'
 
 
 class AlbumDetail extends Component {
-  constructor(props) {
-    super(props);
-      this.textInput = React.createRef();
-  }
 
   state = {
     loaded: false,
@@ -46,6 +43,8 @@ class AlbumDetail extends Component {
   }
 
   albumClick = (e) => {
+    let height = getComputedStyle(document.getElementById(`${this.renderCSSTag()}album-image`)).height
+    console.log(height);
     if(e.target.id === 'favoriteartist-clickable'){
       this.props.deleteArtist(this.props.artist)
     } else if(this.props.location.pathname === '/albums'){
@@ -90,10 +89,12 @@ class AlbumDetail extends Component {
   }
 
   getImageHeight = () => {
-    let height = document.getElementById(`${this.renderCSSTag()}album-image`).style.height
-    console.log(height);
-    // document.getElementsByClassName('animated-background').style.height = height
-    return height
+    const el = document.getElementById(`${this.renderCSSTag()}album-image`)
+    if( el && el !== 'auto' ) {
+      let height = getComputedStyle(el).height
+      console.log(height);
+      return height
+    }
   }
 
   render() {
@@ -122,35 +123,18 @@ class AlbumDetail extends Component {
 
           <CardSection>
             <div id='image-container'>
-              { !this.state.loaded ?
-                <div
-                  className='animated-background'
-                  // style = {{height: this.getImageHeight()}}
-                >
-                </div> : null }
-              <img
+              <LazyLoadImage
                 id={`${this.renderCSSTag()}album-image`}
                 src={this.props.image ? this.props.image : record}
-                onLoad={() => (this.setState({ loaded: true }))}
-                alt='oh no!'
+                effect="blur"
+                alt={record}
                 onClick={this.albumClick}
                 onError={(e) => { e.target.src = record /*replacement image*/ }}
-                ref={this.textInput}
-                style={{
-                  animationName: 'gracefulimage',
-                  animationDuration: '0.3s',
-                  animationIterationCount: 1,
-                  animationTimingFunction: 'ease-in',
-                  backgroundColor: 'red',
-                  display: !this.state.loaded ? 'none' : undefined,
-                }}
               />
-              <div
-                id={`${this.renderCSSTag()}clickable`}
-                onClick={this.albumClick} >
-                  {this.props.location.pathname === '/home' || this.props.location.pathname === '/albums' ?
-                  <p id={`${this.renderCSSTag()}clickable`}>Add to Favorites</p>
-                  : <p id={`${this.renderCSSTag()}clickable`}>Remove from Favorites</p>}
+              <div id={`${this.renderCSSTag()}clickable`} onClick={this.albumClick} >
+                {this.props.location.pathname === '/home' || this.props.location.pathname === '/albums' ?
+                <p id={`${this.renderCSSTag()}clickable`}>Add to Favorites</p>
+                : <p id={`${this.renderCSSTag()}clickable`}>Remove from Favorites</p>}
               </div>
             </div>
           </CardSection>
