@@ -3,6 +3,7 @@ import Card from '../Card'
 import CardSection from '../CardSection'
 import Button from '../Button'
 import record from '../../images/record.png'
+import placeholder from '../../images/placeholder.jpeg'
 import './index.css'
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -129,6 +130,8 @@ class AlbumDetail extends Component {
                 id={`${this.renderCSSTag()}album-image`}
                 src={this.props.image ? this.props.image : record}
                 effect="blur"
+                placeholderSrc={placeholder}
+                scrollPosition={this.props.scrollPosition}
                 alt={record}
                 onClick={this.albumClick}
                 onError={(e) => { e.target.src = record /*replacement image*/ }}

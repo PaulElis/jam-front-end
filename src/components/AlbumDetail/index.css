@@ -61,17 +61,17 @@ div#image-container:hover #clickable{
 
 span.lazy-load-image-background.blur.lazy-load-image-loaded{
   width: 100%;
+  border-radius: 0px 0px 5px 5px;
 }
 
 img#album-image{
   width: 100%;
-  border-radius: 0px 0px 5px 5px;
   cursor: pointer;
 }
 
 img#album-image:hover{
   transition: 1s;
-  opacity: .7;
+  opacity: .9;
 }
 
 div#clickable{
