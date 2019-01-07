@@ -9,11 +9,16 @@ import { withRouter } from "react-router-dom";
 
 class Header extends Component {
 
+  renderHome = () => {
+    this.props.history.push('/')
+    this.props.fetchTopArtists()
+  }
+
   render() {
     // console.log('Header', this.props);
     return (
       <div id='header-container'>
-        <div id='jam-logo' alt='oh no!' onClick={() => this.props.history.push('/')} >
+        <div id='jam-logo' alt='oh no!' onClick={() => this.renderHome() } >
           JAM
         </div>
         <div id='header-right'>
