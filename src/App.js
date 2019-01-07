@@ -22,13 +22,10 @@ class App extends Component {
     }
   }
 
-  initialRender = () => {
-    this.props.fetchTopArtists()
-      .then(() => this.props.history.push('/home'))
-  }
-
   componentDidMount(){
-    this.props.albums.length === 0 ? this.initialRender() : this.props.history.push('/albums')
+    if(this.props.location.pathname === '/home'){
+      this.props.fetchTopArtists()
+    }
   }
 
   render() {
