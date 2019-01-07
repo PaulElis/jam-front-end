@@ -5,6 +5,7 @@ import Button from '../Button'
 import record from '../../images/record.png'
 import placeholder from '../../images/placeholder.jpeg'
 import './index.css'
+import { numberFormat } from './functions.js'
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -18,19 +19,6 @@ class AlbumDetail extends Component {
 
   state = {
     loaded: false,
-  }
-
-  numberFormat = (num) => {
-          // Nine Zeroes for Billions
-  return Math.abs(Number(num)) >= 1.0e+9
-       ? Math.abs(Number(num)) / 1.0e+9 + "B"
-          // Six Zeroes for Millions
-       : Math.abs(Number(num)) >= 1.0e+6
-       ? Math.round(Number(num).toString().slice(0,2)) / 1.0e+1 + "M"
-          // Three Zeroes for Thousands
-       : Math.abs(Number(num)) >= 1.0e+3
-       ? Math.round(Number(num).toString().slice(0,3)) + "K"
-       : Math.abs(Number(num));
   }
 
   addAlbumToFavorites = (album) => {
@@ -118,8 +106,8 @@ class AlbumDetail extends Component {
                 </span>
 
                 <span className={`${this.renderCSSTag()}card-header`}>
-                  {this.props.artist ? this.numberFormat(this.props.artist.listeners) :
-                  this.numberFormat(this.props.album.playcount)} Plays </span>
+                  {this.props.artist ? numberFormat(this.props.artist.listeners) :
+                  numberFormat(this.props.album.playcount)} Plays </span>
               </div>
             </CardSection>
           </div>

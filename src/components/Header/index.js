@@ -9,24 +9,18 @@ import { withRouter } from "react-router-dom";
 
 class Header extends Component {
 
-  renderTopArtists = () => {
-    this.props.fetchTopArtists()
-      .then(()=>
-        this.props.history.push('/home'))
-  }
-
   render() {
     // console.log('Header', this.props);
     return (
       <div id='header-container'>
-        <div id='jam-logo' alt='oh no!' onClick={() => {this.renderTopArtists()}} >
+        <div id='jam-logo' alt='oh no!' onClick={() => this.props.history.push('/')} >
           JAM
         </div>
         <div id='header-right'>
           <Search />
           <div id='favorites-link' >
               <img id='favorites-image' alt='oh no!' src={favorites}
-                onClick={() => {this.props.history.push('/favorites')}} />
+                onClick={() => this.props.history.push('/favorites')} />
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('App Props', this.props.location.pathname);
+    // console.log('App Props', this.props.location.pathname);
     return (
       <div className="App">
         <header className="App-header">
