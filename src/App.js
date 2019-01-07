@@ -23,19 +23,19 @@ class App extends Component {
   }
 
   componentDidMount(){
-    if(this.props.location.pathname === '/home'){
+    if(this.props.location.pathname === '/'){
       this.props.fetchTopArtists()
     }
   }
 
   render() {
-    // console.log('App Props', this.props);
+    console.log('App Props', this.props.location.pathname);
     return (
       <div className="App">
         <header className="App-header">
           <Header />
         </header>
-          <Route exact path="/home" component={Home}/>
+          <Route exact path="/" component={Home}/>
           <Route exact path="/favorites" component={Favorites}/>
           <Route exact path="/albums" component={AlbumList}/>
       </div>
