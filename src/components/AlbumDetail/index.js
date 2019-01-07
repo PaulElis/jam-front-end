@@ -89,7 +89,7 @@ class AlbumDetail extends Component {
   }
 
   render() {
-    // console.log('AlbumDetail state:', this.state);
+    // console.log('AlbumDetail props:', this.props.artist.listeners);
     return (
       <div id={`${this.renderCSSTag()}albumdetail-container`}>
         <Card>
