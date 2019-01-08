@@ -12,9 +12,14 @@ class Button extends Component {
   render() {
     // console.log('props', this.props);
     return (
-      <a href={this.props.link} target="_blank"
-        rel="noopener noreferrer" id={`${this.renderCSSTag()}button`}>
-        {this.props.children} </a>
+      <a 
+        href={this.props.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        id={`${this.renderCSSTag()}button`}
+      >
+        {this.props.children}
+      </a>
     );
   }
 }

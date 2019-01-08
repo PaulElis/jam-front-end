@@ -15,22 +15,6 @@ describe('AlbumDetail', () => {
   })
 })
 
-// describe('Card count', () => {
-//   it('renders children when passed in', () => {
-//     const wrapper = shallow((
-//       <AlbumDetail>
-//         <div id='albumdetail-container' />
-//       </AlbumDetail>
-//     ));
-//     expect(wrapper.contains(<div id='albumdetail-container' />)).to.equal(true);
-//   });
-
-  // it('renders 1 Card component', () => {
-  //   const wrapper = shallow(<AlbumDetail />);
-  //   expect(wrapper.find(Card)).to.have.lengthOf(1);
-  // })
-// })
-
 describe('numberFormat', () => {
   it('rounds 1,039,469 to 1M', () => {
     expect(func.numberFormat(1039469)).toBe('1M');
