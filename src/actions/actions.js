@@ -160,3 +160,7 @@ export function getFavorites(){
     })
   }
 }
+// 
+// module.exports = {
+//   this.fetchTopArtists: this.fetchTopArtists,
+// }
