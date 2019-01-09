@@ -6,7 +6,6 @@ import Button from '../Button'
 import record from '../../images/record.png'
 import placeholder from '../../images/placeholder.jpeg'
 import './index.css'
-import { numberFormat } from './functions.js'
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -74,7 +73,7 @@ class AlbumDetail extends Component {
   }
 
   render() {
-    console.log('AlbumDetail props:', this.props);
+    // console.log('AlbumDetail props:', this.props);
     return (
       <div id={`${this.renderCSSTag()}albumdetail-container`}>
         <Card>
@@ -105,12 +104,7 @@ class AlbumDetail extends Component {
           </CardSection>
 
           <CardSection>
-            <Button
-              top_artists={this.props.top_artists}
-              artist={this.props.artist}
-              link={this.props.artist ? this.props.artist.url : this.props.album.url} >
-              {this.props.artist ? 'View Artist' : 'View Album'}
-            </Button>
+            <Button { ...this.props} />
           </CardSection>
         </Card>
       </div>

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header'
 // import About from './components/About.js'
-import AlbumList from './components/AlbumList'
+import AlbumListContainer from './components/AlbumList/Container'
+// import AlbumList from './components/AlbumList'
 import Favorites from './components/Favorites/Container'
 import Home from './components/Home'
 
@@ -37,7 +38,7 @@ class App extends Component {
         </header>
           <Route exact path="/" component={Home}/>
           <Route exact path="/favorites" component={Favorites}/>
-          <Route exact path="/albums" component={AlbumList}/>
+          <Route exact path="/albums" component={AlbumListContainer}/>
       </div>
     );
   }

@@ -16,8 +16,9 @@ class Button extends Component {
         target="_blank"
         rel="noopener noreferrer"
         id={`${this.renderCSSTag()}button`}
+        link={this.props.artist ? this.props.artist.url : this.props.album.url}
       >
-        {this.props.children}
+        {this.props.artist ? 'View Artist' : 'View Album'}
       </a>
     );
   }

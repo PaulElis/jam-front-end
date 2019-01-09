@@ -11,11 +11,13 @@ class TopOfCard extends Component {
   }
 
   renderLink = () => {
-    return this.props.artist ?
-      <a href={this.props.artist.url} target="_blank" rel="noopener noreferrer">{this.renderArtistOrAlbumName()}</a>
-        : this.props.album.name !== '(null)' ?
-      <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.renderArtistOrAlbumName()}</a>
-        : <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.props.album.artist.name}'s Untitled Album</a>
+    if (this.props.artist){
+      return <a href={this.props.artist.url} target="_blank" rel="noopener noreferrer">{this.renderArtistOrAlbumName()}</a>
+    } else if(this.props.album.name !== '(null)') {
+      return <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.renderArtistOrAlbumName()}</a>
+    } else {
+      return <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.props.album.artist.name}'s Untitled Album</a>
+    }
   }
 
   renderArtistOrAlbumName = () => {
