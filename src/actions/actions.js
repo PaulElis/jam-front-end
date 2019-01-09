@@ -1,7 +1,7 @@
 const API_KEY=(process.env.REACT_APP_API_KEY)
 
-// const URL = 'http://localhost:3000/api/v1'
-const URL = 'https://jam-back-end.herokuapp.com/api/v1'
+const URL = 'http://localhost:3000/api/v1'
+// const URL = 'https://jam-back-end.herokuapp.com/api/v1'
 const headers = { "Content-Type": "application/json"}
 
 export function runSearch(query){
@@ -99,15 +99,14 @@ export function addAlbums(album, artist) {
 }
 
 export function addArtistToFavorites(artist) {
-  // console.log(artist);
+  console.log(artist);
   return (dispatch) => {
     return fetch(URL + "/favorite_artists", {
       headers: headers,
       method: "POST",
-      body: JSON.stringify({artist})
+      body: JSON.stringify(artist)
     })
     .then(res => res.json())
-    // .then(console.log)
   }
 }
 
@@ -118,7 +117,8 @@ export function addAlbumToFavorites(album) {
     return fetch(URL + "/favorite_albums", {
       headers: headers,
       method: "POST",
-      body: JSON.stringify(album)})
+      body: JSON.stringify(album)
+    })
     .then(res => res.json())
     // .then(console.log)
   }
@@ -160,7 +160,7 @@ export function getFavorites(){
     })
   }
 }
-// 
+//
 // module.exports = {
 //   this.fetchTopArtists: this.fetchTopArtists,
 // }

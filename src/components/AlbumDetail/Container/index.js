@@ -64,7 +64,7 @@ class AlbumDetailContainer extends Component {
   }
 
   render() {
-    // console.log('AlbumDetailContainer props:', this.props);
+    console.log('AlbumDetailContainer props:', this.props);
     return (
       <div>
         <AlbumDetail {...this.props} />

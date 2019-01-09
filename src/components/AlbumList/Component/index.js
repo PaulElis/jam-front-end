@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AlbumDetail from '../../AlbumDetail/Component'
+import AlbumDetailContainer from '../../AlbumDetail/Container'
 import './index.css'
 
 import { getFavorites, deleteArtistFromFavorites, runSearch } from '../../../actions/actions'
@@ -11,7 +11,7 @@ class AlbumList extends Component {
     // console.log('AlbumList:', this.props);
     return (
       <div>
-        <AlbumDetail {...this.props} />
+        <AlbumDetailContainer {...this.props} />
       </div>
     );
   }

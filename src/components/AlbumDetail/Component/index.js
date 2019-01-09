@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import Card from '../../Card'
 import CardSection from '../../CardSection'
 import TopOfCard from '../../TopOfCard'
+import AlbumImage from '../../AlbumImage'
 import Button from '../../Button'
-import record from '../../../images/record.png'
-import placeholder from '../../../images/placeholder.jpeg'
 import './index.css'
 
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import 'react-lazy-load-image-component/src/effects/opacity.css';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, fetchFullArtistInfo } from '../../../actions/actions'
@@ -20,7 +16,7 @@ class AlbumDetail extends Component {
   state = {
     loaded: false,
   }
-  
+
   addAlbumToFavorites = (album) => {
     // console.log('album:', album);
     this.props.fetchFullArtistInfo(album.artist.name)
@@ -72,7 +68,7 @@ class AlbumDetail extends Component {
   // }
 
   render() {
-    console.log('AlbumDetail props:', this.props);
+    // console.log('AlbumDetail props:', this.props);
     return (
       <div id={`${this.renderCSSTag()}albumdetail-container`}>
         <Card>
@@ -84,21 +80,7 @@ class AlbumDetail extends Component {
 
           <CardSection>
             <div id='image-container'>
-              <LazyLoadImage
-                id={`${this.renderCSSTag()}album-image`}
-                src={this.props.image ? this.props.image : record}
-                effect="blur"
-                placeholderSrc={placeholder}
-                scrollPosition={this.props.scrollPosition}
-                alt={record}
-                onClick={this.albumClick}
-                onError={(e) => { e.target.src = record /*replacement image*/ }}
-              />
-              <div id={`${this.renderCSSTag()}clickable`} onClick={this.albumClick} >
-                {this.props.location.pathname === '/' || this.props.location.pathname === '/albums' ?
-                <p id={`${this.renderCSSTag()}clickable`}>Add to Favorites</p>
-                : <p id={`${this.renderCSSTag()}clickable`}>Remove from Favorites</p>}
-              </div>
+              <AlbumImage {...this.props} />
             </div>
           </CardSection>
 
