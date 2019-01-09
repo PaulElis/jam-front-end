@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AlbumDetail from '../../AlbumDetail'
+import AlbumDetail from '../../AlbumDetail/Component'
 import './index.css'
 
 class FavoriteArtistAlbums extends Component {

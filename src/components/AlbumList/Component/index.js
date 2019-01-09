@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import AlbumDetail from '../AlbumDetail'
+import AlbumDetail from '../../AlbumDetail/Component'
 import './index.css'
 
-import { getFavorites, deleteArtistFromFavorites, runSearch } from '../../actions/actions'
+import { getFavorites, deleteArtistFromFavorites, runSearch } from '../../../actions/actions'
 import { connect } from 'react-redux'
 
 class AlbumList extends Component {

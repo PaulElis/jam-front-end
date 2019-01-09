@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Card from '../Card'
-import CardSection from '../CardSection'
-import TopOfCard from '../TopOfCard'
-import Button from '../Button'
-import record from '../../images/record.png'
-import placeholder from '../../images/placeholder.jpeg'
+import Card from '../../Card'
+import CardSection from '../../CardSection'
+import TopOfCard from '../../TopOfCard'
+import Button from '../../Button'
+import record from '../../../images/record.png'
+import placeholder from '../../../images/placeholder.jpeg'
 import './index.css'
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -12,7 +12,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, fetchFullArtistInfo } from '../../actions/actions'
+import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, fetchFullArtistInfo } from '../../../actions/actions'
 
 
 class AlbumDetail extends Component {
@@ -34,8 +34,7 @@ class AlbumDetail extends Component {
   }
 
   albumClick = (e) => {
-    let height = getComputedStyle(document.getElementById(`${this.renderCSSTag()}album-image`)).height
-    console.log(height);
+    // let height = getComputedStyle(document.getElementById(`${this.renderCSSTag()}album-image`)).height
     if(e.target.id === 'favoriteartist-clickable'){
       this.props.deleteArtist(this.props.artist)
     } else if(this.props.location.pathname === '/albums'){

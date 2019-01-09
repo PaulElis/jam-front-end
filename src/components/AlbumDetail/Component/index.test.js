@@ -5,8 +5,6 @@ import '../../setupEnzyme'
 import { shallow } from 'enzyme';
 import React from 'react';
 import AlbumDetail from './index';
-import Card from './index';
-
 
 
 describe('AlbumDetail', () => {

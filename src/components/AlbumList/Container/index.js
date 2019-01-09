@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import AlbumList from '../../AlbumList'
+import AlbumList from '../Component'
 import './index.css'
 
 import { getFavorites, deleteArtistFromFavorites, runSearch } from '../../../actions/actions'
 import { connect } from 'react-redux'
+
+function mapStateToProps(state){
+  return {
+    albums: state.albums,
+    top_artists: state.top_artists,
+  }
+}
 
 class AlbumListContainer extends Component {
 
@@ -32,13 +39,6 @@ class AlbumListContainer extends Component {
         {this.renderAlbumList()}
       </div>
     )
-  }
-}
-
-function mapStateToProps(state){
-  return {
-    albums: state.albums,
-    top_artists: state.top_artists,
   }
 }
 
