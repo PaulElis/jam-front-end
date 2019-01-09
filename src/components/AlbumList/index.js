@@ -8,10 +8,6 @@ import { connect } from 'react-redux'
 class AlbumList extends Component {
 
   render() {
-    // console.log('AlbumList state:', this.state)
-    // console.log('AlbumList props', this.props)
-    // {this.state.top_artists ?
-    //   this.renderTopArtists() : this.renderAlbums()}
     return (
       <div>
         <AlbumDetail {...this.props} />

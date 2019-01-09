@@ -17,7 +17,6 @@ class AlbumListContainer extends Component {
   }
 
   renderAlbumList = () => {
-    console.log('in renderAlbumList', this.state.top_artists);
     if(this.state.top_artists){
       return this.state.top_artists.map(artist =>
       <AlbumList key={artist.url} artist={artist} top_artists={this.state.top_artists} image={artist.image[3]['#text']}/>

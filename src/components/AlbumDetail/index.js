@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from '../Card'
 import CardSection from '../CardSection'
+import TopOfCard from '../TopOfCard'
 import Button from '../Button'
 import record from '../../images/record.png'
 import placeholder from '../../images/placeholder.jpeg'
@@ -63,16 +64,6 @@ class AlbumDetail extends Component {
       'favoritealbum-' : ''
   }
 
-  renderArtistOrAlbumName = () => {
-    if(this.props.artist){
-      return this.props.artist.name.length > 21 ? `${this.props.artist.name.slice(0, 21)}...`
-        : this.props.artist.name
-    } else if (this.props.album) {
-      return this.props.album.name.length > 21 ? `${this.props.album.name.slice(0, 21)}...`
-        : this.props.album.name
-    }
-  }
-
   getImageHeight = () => {
     const el = document.getElementById(`${this.renderCSSTag()}album-image`)
     if( el && el !== 'auto' ) {
@@ -89,20 +80,7 @@ class AlbumDetail extends Component {
         <Card>
           <div id={`${this.renderCSSTag()}card-header-upper-container`}>
             <CardSection>
-              <div id={`${this.renderCSSTag()}card-header-container`}>
-                <span className='card-header' id={`${this.renderCSSTag()}card-header-link`}>
-                {/* Is there an Artist or an Album */}
-                {this.props.artist ?
-                  <a href={this.props.artist.url} target="_blank" rel="noopener noreferrer">{this.renderArtistOrAlbumName()}</a> :
-                    this.props.album.name !== '(null)' ?
-                  <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.renderArtistOrAlbumName()}</a> :
-                    <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.props.album.artist.name}'s Untitled Album</a>}
-                </span>
-
-                <span className={`${this.renderCSSTag()}card-header`}>
-                  {this.props.artist ? numberFormat(this.props.artist.listeners) :
-                  numberFormat(this.props.album.playcount)} Plays </span>
-              </div>
+              <TopOfCard { ...this.props} />
             </CardSection>
           </div>
 
