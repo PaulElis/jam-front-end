@@ -63,6 +63,10 @@ class AlbumDetail extends Component {
       'favoritealbum-' : ''
   }
 
+  renderArtistOrAlbumName = () => {
+    
+  }
+
   renderAlbumName = () => {
     if(this.props.album.name.length > 18){
       return `${this.props.album.name.slice(0, 18)}...`
@@ -89,7 +93,7 @@ class AlbumDetail extends Component {
   }
 
   render() {
-    // console.log('AlbumDetail props:', this.props.artist.listeners);
+    console.log('AlbumDetail props:', this.props);
     return (
       <div id={`${this.renderCSSTag()}albumdetail-container`}>
         <Card>

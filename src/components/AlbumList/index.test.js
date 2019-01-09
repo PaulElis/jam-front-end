@@ -8,6 +8,10 @@ import AlbumList from './index';
 let wrapper
 
 beforeEach(() => {
+  const mockStore = {
+    albums: []
+  }
+
   const mockProps = {
     deleteArtistFromFavorites: jest.fn(),
     getFavorites: jest.fn(),
@@ -19,7 +23,7 @@ beforeEach(() => {
     top_artists: [],
   }
 
-  wrapper = shallow(<AlbumList {...mockProps} />)
+  wrapper = shallow(<AlbumList store={mockStore} {...mockProps} />)
 })
 
 describe('AlbumList', () => {
