@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 class AlbumList extends Component {
 
   render() {
-    console.log('AlbumList:', this.props);
+    // console.log('AlbumList:', this.props);
     return (
       <div>
         <AlbumDetail {...this.props} />

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header'
-// import About from './components/About.js'
 import AlbumListContainer from './components/AlbumList/Container'
-// import AlbumList from './components/AlbumList'
 import Favorites from './components/Favorites/Container'
 import Home from './components/Home'
 

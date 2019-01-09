@@ -11,22 +11,30 @@ class TopOfCard extends Component {
   }
 
   renderLink = () => {
+    let link = ''
+    let name = ''
     if (this.props.artist){
-      return <a href={this.props.artist.url} target="_blank" rel="noopener noreferrer">{this.renderArtistOrAlbumName()}</a>
-    } else if(this.props.album.name !== '(null)') {
-      return <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.renderArtistOrAlbumName()}</a>
-    } else {
-      return <a href={this.props.album.url} target="_blank" rel="noopener noreferrer">{this.props.album.artist.name}'s Untitled Album</a>
+      link = this.props.artist.url
+    } else if (this.props.album) {
+      link = this.props.album.url
+        if(this.props.album.name === '(null)'){
+          name = `${this.props.album.artist.name}'s Untitled Album`
+        }
     }
+    return(
+      <a href={link} target="_blank" rel="noopener noreferrer">
+        {name === '' ? this.renderArtistOrAlbumName() : name}
+      </a>
+    )
   }
 
   renderArtistOrAlbumName = () => {
     if(this.props.artist){
-      return this.props.artist.name.length > 21 ? `${this.props.artist.name.slice(0, 21)}...`
-        : this.props.artist.name
+      return this.props.artist.name.length > 21 ?
+        `${this.props.artist.name.slice(0, 21)}...` : this.props.artist.name
     } else if (this.props.album) {
-      return this.props.album.name.length > 21 ? `${this.props.album.name.slice(0, 21)}...`
-        : this.props.album.name
+      return this.props.album.name.length > 21 ?
+        `${this.props.album.name.slice(0, 21)}...` : this.props.album.name
     }
   }
 
