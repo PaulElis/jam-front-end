@@ -3,7 +3,16 @@
 exports[`AlbumList snapshot AlbumList component 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <withRouter(Connect(AlbumList)) />,
+  Symbol(enzyme.__unrendered__): <withRouter(Connect(AlbumList))
+    albums={Array []}
+    deleteArtistFromFavorites={[Function]}
+    getFavorites={[Function]}
+    history={Object {}}
+    location={Object {}}
+    match={Object {}}
+    runSearch={[Function]}
+    top_artists={Array []}
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],

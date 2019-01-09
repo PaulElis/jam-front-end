@@ -4,7 +4,6 @@ import './index.css'
 
 import { getFavorites, deleteArtistFromFavorites, runSearch } from '../../actions/actions'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 
 class AlbumList extends Component {
 
@@ -30,7 +29,7 @@ class AlbumList extends Component {
   }
 
   render() {
-    // console.log('AlbumList state:', this.state)
+    console.log('AlbumList state:', this.state)
     // console.log('AlbumList props', this.props)
     return (
       <div id='albumlist-container'>
@@ -49,4 +48,4 @@ function mapStateToProps(state){
   }
 }
 
-export default withRouter(connect(mapStateToProps, {getFavorites, deleteArtistFromFavorites, runSearch})(AlbumList))
+export default connect(mapStateToProps, {getFavorites, deleteArtistFromFavorites, runSearch})(AlbumList)

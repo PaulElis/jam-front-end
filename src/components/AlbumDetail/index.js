@@ -43,7 +43,7 @@ class AlbumDetail extends Component {
     } else if(this.props.location.pathname === '/favorites' && e.target.id === 'favoritealbum-clickable'){
       this.props.deleteAlbum(this.props.album)
     } else{
-    this.props.location.pathname === '/home' ? this.addArtistToFavorites(this.props.artist)
+    this.props.location.pathname === '/' ? this.addArtistToFavorites(this.props.artist)
     : this.props.location.pathname === '/albums' ? this.addAlbumToFavorites(this.props.album)
     : e.target.id === "favoriteartist-album-image" ? this.props.deleteArtist(this.props.artist)
     : e.target.id === "favoritealbum-album-image" ? this.props.deleteAlbum(this.props.album)
@@ -125,7 +125,7 @@ class AlbumDetail extends Component {
                 onError={(e) => { e.target.src = record /*replacement image*/ }}
               />
               <div id={`${this.renderCSSTag()}clickable`} onClick={this.albumClick} >
-                {this.props.location.pathname === '/home' || this.props.location.pathname === '/albums' ?
+                {this.props.location.pathname === '/' || this.props.location.pathname === '/albums' ?
                 <p id={`${this.renderCSSTag()}clickable`}>Add to Favorites</p>
                 : <p id={`${this.renderCSSTag()}clickable`}>Remove from Favorites</p>}
               </div>
