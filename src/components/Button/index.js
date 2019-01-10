@@ -12,11 +12,10 @@ class Button extends Component {
   render() {
     // console.log('props', this.props);
     return (
-      <a href={this.props.link}
+      <a href={this.props.artist ? this.props.artist.url : this.props.album.url}
         target="_blank"
         rel="noopener noreferrer"
         id={`${this.renderCSSTag()}button`}
-        link={this.props.artist ? this.props.artist.url : this.props.album.url}
       >
         {this.props.artist ? 'View Artist' : 'View Album'}
       </a>

@@ -12,8 +12,8 @@ class AlbumImage extends Component {
   addAlbumToFavorites = (album) => {
     // console.log('album:', album);
     this.props.fetchFullArtistInfo(album.artist.name)
-    .then(() => this.props.addArtistToFavorites(this.props.full_artist_info))
-    .then(() => this.props.addAlbumToFavorites(album))
+      .then(() => this.props.addArtistToFavorites(this.props.full_artist_info))
+      .then(() => this.props.addAlbumToFavorites(album))
   }
 
   addArtistToFavorites = (artist) => {
@@ -63,12 +63,12 @@ class AlbumImage extends Component {
           scrollPosition={this.props.scrollPosition}
           alt={record}
           onClick={this.albumClick}
-          onError={(e) => { e.target.src = record /*replacement image*/ }}
-        />
+          onError={(e) => { e.target.src = record }} />
         <div id={`${this.renderCSSTag()}clickable`} onClick={this.albumClick} >
-          {this.props.location.pathname === '/' || this.props.location.pathname === '/albums' ?
-          <p id={`${this.renderCSSTag()}clickable`}>Add to Favorites</p>
-          : <p id={`${this.renderCSSTag()}clickable`}>Remove from Favorites</p>}
+          {this.props.location.pathname === '/' || this.props.location.pathname === '/albums'
+            ? <p id={`${this.renderCSSTag()}clickable`}>Add to Favorites</p>
+            : <p id={`${this.renderCSSTag()}clickable`}>Remove from Favorites</p>
+          }
         </div>
       </div>
     );

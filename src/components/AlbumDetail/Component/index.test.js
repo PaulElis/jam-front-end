@@ -1,7 +1,7 @@
 const func = require('./functions');
 const index = require('./index');
 
-import '../../setupEnzyme'
+import '../../../setupEnzyme'
 import { shallow } from 'enzyme';
 import React from 'react';
 import AlbumDetail from './index';

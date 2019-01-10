@@ -9,18 +9,14 @@ import { addArtistToFavorites, addAlbumToFavorites, deleteArtistFromFavorites, f
 
 class AlbumDetailContainer extends Component {
 
-  state = {
-    loaded: false,
-  }
-
-  addAlbumToFavorites = (album) => {
+  clickAlbumToFavorites = (album) => {
     // console.log('album:', album);
     this.props.fetchFullArtistInfo(album.artist.name)
     .then(() => this.props.addArtistToFavorites(this.props.full_artist_info))
     .then(() => this.props.addAlbumToFavorites(album))
   }
 
-  addArtistToFavorites = (artist) => {
+  clickArtistToFavorites = (artist) => {
     this.props.fetchFullArtistInfo(artist.name)
     .then(() => this.props.addArtistToFavorites(this.props.full_artist_info))
   }
@@ -54,20 +50,16 @@ class AlbumDetailContainer extends Component {
       'favoritealbum-' : ''
   }
 
-  getImageHeight = () => {
-    const el = document.getElementById(`${this.renderCSSTag()}album-image`)
-    if( el && el !== 'auto' ) {
-      let height = getComputedStyle(el).height
-      console.log(height);
-      return height
-    }
-  }
-
   render() {
     // console.log('AlbumDetailContainer props:', this.props);
     return (
       <div>
-        <AlbumDetail {...this.props} />
+        <AlbumDetail {...this.props}
+          renderCSSTag={this.renderCSSTag}
+          changeButtonBack={this.changeButtonBack}
+          albumClick={this.albumClick}
+          clickArtistToFavorites={this.clickArtistToFavorites}
+          clickAlbumToFavorites={this.clickAlbumToFavorites} />
       </div>
     );
   }
