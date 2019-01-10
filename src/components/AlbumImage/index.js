@@ -9,6 +9,19 @@ import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 class AlbumImage extends Component {
 
+  addAlbumToFavorites = (album) => {
+    // console.log('album:', album);
+    this.props.fetchFullArtistInfo(album.artist.name)
+    .then(() => this.props.addArtistToFavorites(this.props.full_artist_info))
+    .then(() => this.props.addAlbumToFavorites(album))
+  }
+
+  addArtistToFavorites = (artist) => {
+    console.log('inaddArtistToFavorites');
+    this.props.fetchFullArtistInfo(artist.name)
+      .then(() => this.props.addArtistToFavorites(this.props.full_artist_info))
+  }
+
   albumClick = (e) => {
     // let height = getComputedStyle(document.getElementById(`${this.renderCSSTag()}album-image`)).height
     if(e.target.id === 'favoriteartist-clickable'){
@@ -18,8 +31,8 @@ class AlbumImage extends Component {
     } else if(this.props.location.pathname === '/favorites' && e.target.id === 'favoritealbum-clickable'){
       this.props.deleteAlbum(this.props.album)
     } else{
-    this.props.location.pathname === '/' ? this.props.addArtistToFavorites(this.props.artist)
-    : this.props.location.pathname === '/albums' ? this.props.addAlbumToFavorites(this.props.album)
+    this.props.location.pathname === '/' ? this.addArtistToFavorites(this.props.artist)
+    : this.props.location.pathname === '/albums' ? this.addAlbumToFavorites(this.props.album)
     : e.target.id === "favoriteartist-album-image" ? this.props.deleteArtist(this.props.artist)
     : e.target.id === "favoritealbum-album-image" ? this.props.deleteAlbum(this.props.album)
     : console.log('AlbumClick Error!');
