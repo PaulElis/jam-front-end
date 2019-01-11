@@ -63,11 +63,11 @@ class Favorites extends Component {
         :
         <div id={`${this.renderCSSTag()}favorites-container`}>
           <div id='favorites-toplevel'>
-          <FavoriteArtistsList favorite_artists={this.state.favorite_artists} />
-          <FavoriteArtistCard favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} />
+          <FavoriteArtistsList {...this.props} favorite_artists={this.state.favorite_artists} renderCSSTag={this.renderCSSTag} />
+          <FavoriteArtistCard {...this.props} favorite_artists={this.state.favorite_artists} deleteArtist={this.deleteArtist} renderCSSTag={this.renderCSSTag} />
           </div>
-          <FavoriteArtistAlbums favorite_artists={this.state.favorite_artists} deleteAlbum={this.deleteAlbum} />
-          <FavoriteArtistBio favorite_artists={this.state.favorite_artists} />
+          <FavoriteArtistAlbums {...this.props} favorite_artists={this.state.favorite_artists} deleteAlbum={this.deleteAlbum} renderCSSTag={this.renderCSSTag} />
+          <FavoriteArtistBio {...this.props} favorite_artists={this.state.favorite_artists} renderCSSTag={this.renderCSSTag} />
         </div>
       }
       </div>
