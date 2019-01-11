@@ -6,14 +6,25 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import AlbumDetail from './index';
 
+let wrapper
 
-describe('AlbumDetail', () => {
-  test('expect to render AlbumDetail components', () => {
-    expect(shallow(<AlbumDetail />).length).toEqual(1);
+beforeEach(() => {
+  const mockStore = {}
+  const mockProps = {
+    renderCSSTag: jest.fn(),
+  }
+
+  wrapper = shallow(<AlbumDetail store={mockStore} {...mockProps} />)
+})
+
+
+describe('AlbumDetail component', () => {
+  it('There is an AlbumDetail component', () => {
+    expect(wrapper.length).toEqual(1);
   })
 })
 
-describe('numberFormat', () => {
+describe('numberFormat function', () => {
   it('rounds 1,039,469 to 1M', () => {
     expect(func.numberFormat(1039469)).toBe('1M');
   });
